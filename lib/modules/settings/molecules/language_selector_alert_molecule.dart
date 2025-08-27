@@ -1,5 +1,5 @@
-import 'package:awesome_flutter_template/i18n/gen/strings.g.dart';
-import 'package:awesome_flutter_template/tokens/utils/atoms/locale_code_atom.dart';
+import 'package:dice_bag/i18n/gen/strings.g.dart';
+import 'package:dice_bag/tokens/utils/atoms/locale_code_atom.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';

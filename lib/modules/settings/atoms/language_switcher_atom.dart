@@ -1,6 +1,6 @@
-import 'package:awesome_flutter_template/i18n/gen/strings.g.dart';
-import 'package:awesome_flutter_template/modules/settings/molecules/language_selector_alert_molecule.dart';
-import 'package:awesome_flutter_template/tokens/utils/atoms/locale_code_atom.dart';
+import 'package:dice_bag/i18n/gen/strings.g.dart';
+import 'package:dice_bag/modules/settings/molecules/language_selector_alert_molecule.dart';
+import 'package:dice_bag/tokens/utils/atoms/locale_code_atom.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

@@ -1,5 +1,5 @@
-import 'package:awesome_flutter_template/modules/home/pages/home_page.dart';
-import 'package:awesome_flutter_template/modules/settings/pages/settings_page.dart';
+import 'package:dice_bag/modules/home/pages/home_page.dart';
+import 'package:dice_bag/modules/settings/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppRoutes {

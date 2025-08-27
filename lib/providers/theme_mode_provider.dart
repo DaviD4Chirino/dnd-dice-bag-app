@@ -1,5 +1,5 @@
-import 'package:awesome_flutter_template/tokens/utils/modules/local_storage/models/local_storage.dart';
-import 'package:awesome_flutter_template/tokens/utils/modules/local_storage/models/local_storage_paths.dart';
+import 'package:dice_bag/tokens/utils/modules/local_storage/models/local_storage.dart';
+import 'package:dice_bag/tokens/utils/modules/local_storage/models/local_storage_paths.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';

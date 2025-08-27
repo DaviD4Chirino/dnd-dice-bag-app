@@ -1,7 +1,7 @@
-import 'package:awesome_flutter_template/i18n/gen/strings.g.dart';
-import 'package:awesome_flutter_template/providers/theme_mode_provider.dart';
-import 'package:awesome_flutter_template/tokens/app/app_routes.dart';
-import 'package:awesome_flutter_template/tokens/app/app_theme.dart';
+import 'package:dice_bag/i18n/gen/strings.g.dart';
+import 'package:dice_bag/providers/theme_mode_provider.dart';
+import 'package:dice_bag/tokens/app/app_routes.dart';
+import 'package:dice_bag/tokens/app/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';

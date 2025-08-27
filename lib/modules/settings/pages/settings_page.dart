@@ -1,8 +1,8 @@
-import 'package:awesome_flutter_template/extensions/double_extensions/sized_box_extension.dart';
-import 'package:awesome_flutter_template/i18n/gen/strings.g.dart';
-import 'package:awesome_flutter_template/modules/settings/atoms/language_switcher_atom.dart';
-import 'package:awesome_flutter_template/modules/settings/atoms/theme_mode_switch_atom.dart';
-import 'package:awesome_flutter_template/tokens/app/app_sizing.dart';
+import 'package:dice_bag/extensions/double_extensions/sized_box_extension.dart';
+import 'package:dice_bag/i18n/gen/strings.g.dart';
+import 'package:dice_bag/modules/settings/atoms/language_switcher_atom.dart';
+import 'package:dice_bag/modules/settings/atoms/theme_mode_switch_atom.dart';
+import 'package:dice_bag/tokens/app/app_sizing.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {

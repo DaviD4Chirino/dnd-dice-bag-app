@@ -1,5 +1,5 @@
-import 'package:awesome_flutter_template/i18n/gen/strings.g.dart';
-import 'package:awesome_flutter_template/tokens/app/app_routes.dart';
+import 'package:dice_bag/i18n/gen/strings.g.dart';
+import 'package:dice_bag/tokens/app/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 

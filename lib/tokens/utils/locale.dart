@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:awesome_flutter_template/tokens/utils/modules/local_storage/models/local_storage.dart';
-import 'package:awesome_flutter_template/tokens/utils/modules/local_storage/models/local_storage_paths.dart';
+import 'package:dice_bag/tokens/utils/modules/local_storage/models/local_storage.dart';
+import 'package:dice_bag/tokens/utils/modules/local_storage/models/local_storage_paths.dart';
 
 String getStoredLocale() {
   return LocalStorage.getString(LocalStoragePaths.locale) ??
