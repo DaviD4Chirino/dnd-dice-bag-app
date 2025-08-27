@@ -1,0 +1,29 @@
+{
+  "appName": "Plantilla de Flutter",
+  "modules": {
+    "home": {
+      "title": "Inicio",
+      "FABTooltip": "Aumentar",
+      "counterTitle": "Contador",
+      "counter": {
+        "zero": "No has hecho clic",
+        "one": "Has hecho clic $n vez",
+        "other": "Has hecho clic $n veces"
+      }
+    },
+    "settings": {
+      "title": "Configuración",
+      "languageSwitcher": {
+        "title": "Idioma",
+        "subtitle": "Cambiar el idioma"
+      },
+      "themeSwitcher": {
+        "title": "Cambiar el brillo de la aplicación",
+        "subtitle": {
+          "toLight": "Cambiar a tema claro",
+          "toDark": "Cambiar a tema oscuro"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "appName": "Awesome Flutter Template",
+  "modules": {
+    "home": {
+      "title": "Home",
+      "FABTooltip": "Increment",
+      "counterTitle": "Counter",
+      "counter": {
+        "zero": "You have not clicked on any time",
+        "one": "You have clicked on $n time",
+        "other": "You have clicked on $n times"
+      }
+    },
+    "settings": {
+      "title": "Settings",
+      "languageSwitcher": {
+        "title": "Language",
+        "subtitle": "Select the language you want to use"
+      },
+      "themeSwitcher": {
+        "title": "Set the brightness of the app",
+        "subtitle": {
+          "toLight": "Set to light mode",
+          "toDark": "Set to dark mode"
+        }
+      }
+    }
+  }
+}
