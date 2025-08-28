@@ -1,5 +1,7 @@
 import 'package:dice_bag/i18n/gen/strings.g.dart';
 import 'package:dice_bag/tokens/app/app_routes.dart';
+import 'package:dice_bag/tokens/models/enums/die_faces.dart';
+import 'package:dice_bag/tokens/utils/atoms/polymath.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -10,6 +12,7 @@ class HomePage extends HookWidget {
   Widget build(BuildContext context) {
     final counter = useState(0);
     var t = strings.modules.home;
+    final ThemeData theme = Theme.of(context);
 
     // AppLocalizations t = AppLocalizations.of(context);
 
@@ -31,12 +34,10 @@ class HomePage extends HookWidget {
         child: const Icon(Icons.add),
       ),
       body: Center(
-        child: Text(
-          "d4",
-          style: TextStyle(
-            fontFamily: "Polymath",
-            fontSize: 100,
-          ),
+        child: Polymath(
+          "34",
+          faces: DieFaces.d20,
+          style: theme.textTheme.titleLarge,
         ),
       ),
     );
