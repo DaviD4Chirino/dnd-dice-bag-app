@@ -30,7 +30,15 @@ class HomePage extends HookWidget {
         tooltip: t.FABTooltip,
         child: const Icon(Icons.add),
       ),
-      body: Center(child: Text(t.counter(n: counter.value))),
+      body: Center(
+        child: Text(
+          "d4",
+          style: TextStyle(
+            fontFamily: "Polymath",
+            fontSize: 100,
+          ),
+        ),
+      ),
     );
   }
 }
