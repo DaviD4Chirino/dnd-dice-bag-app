@@ -4,13 +4,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+/// A brute-force adaptation of the Polymath font since the
+/// font has limitations, such as being only white
+/// and having up to 99 numbers available for any die.
+///
+/// You can configure this widget by use of the [style],
+/// [padding] and [faces] parameters.
+///
+/// The [style] parameter is not only for the font style but
+/// the style of the die itself. Pass a [FontWeight.bold]
+/// to display a filled die
 class Polymath extends ConsumerWidget with ConsumerMixin {
   const Polymath(
     this.text, {
     super.key,
     this.faces = DieFaces.d4,
     this.style,
-    this.padding = 60,
+    this.padding = 3.5,
+    this.filled = false,
   });
 
   final String text;
@@ -18,22 +29,23 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
 
   final TextStyle? style;
   final double padding;
+  final bool filled;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
 
-    final isBold = style?.fontWeight == FontWeight.bold
-        ? "bold_"
-        : "";
+    final isBold = filled ? "bold_" : "";
 
     final String chosenFaces = faces == DieFaces.d12Alt
         ? "d12_alt"
         : faces.name;
 
-    var color = style?.fontWeight == FontWeight.bold
+    var color = filled
         ? theme.colorScheme.surface
         : theme.colorScheme.onSurface;
+
+    var textStyle = style ?? theme.textTheme.headlineSmall;
 
     return Stack(
       children: [
@@ -42,23 +54,37 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
           theme: SvgTheme(
             currentColor: theme.colorScheme.onSurface,
           ),
-          width: (style?.fontSize ?? 50) + padding,
-          height: (style?.fontSize ?? 50) + padding,
+          width: (style?.fontSize ?? 50) * padding,
+          height: (style?.fontSize ?? 50) * padding,
         ),
         Positioned.fill(
           child: Align(
             alignment: Alignment.center,
-            child: Text(
-              text,
-              style: (style ?? theme.textTheme.headlineSmall)
-                  ?.copyWith(
+            child: FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 34),
+                child: Text(
+                  text,
+                  style: textStyle?.copyWith(
                     color: color,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w900,
                   ),
+                ),
+              ),
             ),
           ),
         ),
       ],
     );
   }
+
+  Polymath.filled(
+    this.text, {
+    super.key,
+    this.faces = DieFaces.d4,
+    this.style,
+    this.padding = 3.5,
+    this.filled = true,
+  });
 }

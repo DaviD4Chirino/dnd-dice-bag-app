@@ -34,10 +34,10 @@ class HomePage extends HookWidget {
         child: const Icon(Icons.add),
       ),
       body: Center(
-        child: Polymath(
-          "34",
+        child: Polymath.filled(
+          "34000000",
           faces: DieFaces.d20,
-          style: theme.textTheme.titleLarge,
+          style: theme.textTheme.displaySmall,
         ),
       ),
     );
