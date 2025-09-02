@@ -1,6 +1,9 @@
 /// Only for sizing purposes.
 abstract final class AppSizing {
   /// 24.0px
+  static const double xs = 16.0;
+
+  /// 24.0px
   static const double sm = 24.0;
 
   /// 32.0px

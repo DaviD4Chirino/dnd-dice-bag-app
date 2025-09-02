@@ -1,7 +1,8 @@
 import 'package:dice_bag/i18n/gen/strings.g.dart';
 import 'package:dice_bag/tokens/app/app_routes.dart';
-import 'package:dice_bag/tokens/models/enums/die_faces.dart';
-import 'package:dice_bag/tokens/atoms/polymath.dart';
+import 'package:dice_bag/tokens/app/app_sizing.dart';
+import 'package:dice_bag/tokens/modules/dice/atoms/die_button.dart';
+import 'package:flexible_wrap/flexible_wrap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -12,7 +13,6 @@ class HomePage extends HookWidget {
   Widget build(BuildContext context) {
     final counter = useState(0);
     var t = strings.modules.home;
-    final ThemeData theme = Theme.of(context);
 
     // AppLocalizations t = AppLocalizations.of(context);
 
@@ -33,16 +33,36 @@ class HomePage extends HookWidget {
         tooltip: t.FABTooltip,
         child: const Icon(Icons.add),
       ),
-      body: Stack(
-        children: [
-          Center(
-            child: Polymath.filled(
-              "9999",
-              faces: DieFaces.d20,
-              style: theme.textTheme.displaySmall,
+      body: Center(
+        child: Container(
+          constraints: BoxConstraints(maxWidth: 1024),
+
+          alignment: Alignment.topCenter,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: AppSizing.lg,
+                left: AppSizing.sm,
+                right: AppSizing.sm,
+                bottom: AppSizing.lg,
+              ),
+              child: FlexibleWrap(
+                spacing: AppSizing.xs,
+                runSpacing: AppSizing.xs,
+                isOneRowExpanded: true,
+                children: [
+                  DieButton(onPressed: () {}),
+                  DieButton(onPressed: () {}),
+                  DieButton(onPressed: () {}),
+                  DieButton(onPressed: () {}),
+                  DieButton(onPressed: () {}),
+                  DieButton(onPressed: () {}),
+                  DieButton(onPressed: () {}),
+                ],
+              ),
             ),
           ),
-        ],
+        ),
       ),
     );
   }

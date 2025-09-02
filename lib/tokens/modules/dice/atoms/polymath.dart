@@ -48,6 +48,7 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
     var textStyle = style ?? theme.textTheme.headlineSmall;
 
     return Stack(
+      alignment: Alignment.center,
       children: [
         SvgPicture.asset(
           "assets/images/dice/dice_$isBold$chosenFaces.svg",
@@ -65,7 +66,9 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
               style: textStyle?.copyWith(
                 color: color,
                 fontWeight: FontWeight.bold,
+                height: 1.5,
               ),
+              textAlign: TextAlign.center,
             ),
           ),
         ),
