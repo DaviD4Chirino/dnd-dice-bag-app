@@ -29,6 +29,7 @@ dependencies:
   slang: ^4.8.1
   slang_flutter: ^4.8.0
   flutter_localized_locales: ^2.0.5
+  bottom_drawer: ^0.0.5
 
 dev_dependencies:
   flutter_test:

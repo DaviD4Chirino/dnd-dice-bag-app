@@ -60,17 +60,11 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
         Positioned.fill(
           child: Align(
             alignment: Alignment.center,
-            child: FittedBox(
-              fit: BoxFit.fitWidth,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 34),
-                child: Text(
-                  text,
-                  style: textStyle?.copyWith(
-                    color: color,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
+            child: Text(
+              text,
+              style: textStyle?.copyWith(
+                color: color,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),

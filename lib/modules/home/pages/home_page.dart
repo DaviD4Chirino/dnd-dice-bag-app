@@ -33,12 +33,16 @@ class HomePage extends HookWidget {
         tooltip: t.FABTooltip,
         child: const Icon(Icons.add),
       ),
-      body: Center(
-        child: Polymath.filled(
-          "34000000",
-          faces: DieFaces.d20,
-          style: theme.textTheme.displaySmall,
-        ),
+      body: Stack(
+        children: [
+          Center(
+            child: Polymath.filled(
+              "9999",
+              faces: DieFaces.d20,
+              style: theme.textTheme.displaySmall,
+            ),
+          ),
+        ],
       ),
     );
   }
