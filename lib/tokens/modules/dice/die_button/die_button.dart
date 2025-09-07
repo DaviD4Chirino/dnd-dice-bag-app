@@ -48,18 +48,18 @@ class DieButton extends StatelessWidget {
           ),
           Positioned.fill(
             child: Align(
-              alignment: Alignment.bottomCenter,
-              child: SizedBox(
-                height: AppSizing.md,
-                child: DieButtonFooter(),
-              ),
+              alignment: Alignment.topRight,
+              child: DieResetButton(),
             ),
           ),
 
           Positioned.fill(
             child: Align(
-              alignment: Alignment.topRight,
-              child: DieResetButton(),
+              alignment: Alignment.bottomCenter,
+              child: SizedBox(
+                height: AppSizing.md,
+                child: DieButtonFooter(),
+              ),
             ),
           ),
         ],
