@@ -11,7 +11,6 @@ class HomePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final counter = useState(0);
     var t = strings.modules.home;
 
     // AppLocalizations t = AppLocalizations.of(context);
@@ -28,15 +27,9 @@ class HomePage extends HookWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => counter.value++,
-        tooltip: t.FABTooltip,
-        child: const Icon(Icons.add),
-      ),
       body: Center(
         child: Container(
           constraints: BoxConstraints(maxWidth: 1024),
-
           alignment: Alignment.topCenter,
           child: SingleChildScrollView(
             child: Padding(
@@ -49,15 +42,14 @@ class HomePage extends HookWidget {
               child: FlexibleWrap(
                 spacing: AppSizing.xs,
                 runSpacing: AppSizing.xs,
-                isOneRowExpanded: true,
                 children: [
-                  DieButton(onPressed: () {}),
-                  DieButton(onPressed: () {}),
-                  DieButton(onPressed: () {}),
-                  DieButton(onPressed: () {}),
-                  DieButton(onPressed: () {}),
-                  DieButton(onPressed: () {}),
-                  DieButton(onPressed: () {}),
+                  DieButton(onPressed: null),
+                  DieButton(onPressed: null),
+                  DieButton(onPressed: null),
+                  DieButton(onPressed: null),
+                  DieButton(onPressed: null),
+                  DieButton(onPressed: null),
+                  DieButton(onPressed: null),
                 ],
               ),
             ),

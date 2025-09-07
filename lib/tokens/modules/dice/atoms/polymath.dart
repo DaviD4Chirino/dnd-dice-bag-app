@@ -1,3 +1,4 @@
+import 'package:dice_bag/tokens/app/app_spacing.dart';
 import 'package:dice_bag/tokens/mixins/consumer_mixin.dart';
 import 'package:dice_bag/tokens/models/enums/die_faces.dart';
 import 'package:flutter/material.dart';
@@ -61,14 +62,22 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
         Positioned.fill(
           child: Align(
             alignment: Alignment.center,
-            child: Text(
-              text,
-              style: textStyle?.copyWith(
-                color: color,
-                fontWeight: FontWeight.bold,
-                height: 1.5,
+            child: FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppSpacing.lg,
+                ),
+                child: Text(
+                  text,
+                  style: textStyle?.copyWith(
+                    color: color,
+                    fontWeight: FontWeight.bold,
+                    height: 1.5,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
-              textAlign: TextAlign.center,
             ),
           ),
         ),
