@@ -3,6 +3,7 @@ import 'package:dice_bag/tokens/models/enums/die_faces.dart';
 import 'package:dice_bag/tokens/modules/dice/die_button/components/atoms/die_reset_button.dart';
 import 'package:dice_bag/tokens/modules/dice/die_button/components/components/die_button_footer.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
+import 'package:dice_bag/tokens/modules/dice/die_result_dialog/die_result_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -22,8 +23,8 @@ class DieButton extends HookWidget {
         vertical: AppSizing.lg,
         horizontal: AppSizing.lg,
       ),
-      foregroundColor: theme.colorScheme.surfaceContainerHighest,
-      backgroundColor: theme.colorScheme.surfaceContainer,
+      foregroundColor: theme.colorScheme.surfaceContainer,
+      backgroundColor: theme.colorScheme.surfaceContainerLow,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppSizing.xs),
       ),
@@ -38,12 +39,12 @@ class DieButton extends HookWidget {
 
     void increaseDieAmount() {
       dieAmount.value++;
-      dieAmount.value = dieAmount.value.clamp(0, 99);
+      dieAmount.value = dieAmount.value.clamp(1, 99);
     }
 
     void decreaseDieAmount() {
       dieAmount.value--;
-      dieAmount.value = dieAmount.value.clamp(0, 99);
+      dieAmount.value = dieAmount.value.clamp(1, 99);
     }
 
     void setExtra(int value) {
@@ -72,15 +73,16 @@ class DieButton extends HookWidget {
             onPressed:
                 onPressed ??
                 () {
-                  if (kDebugMode) {
-                    print("Die pressed");
-                  }
+                  showDialog(
+                    context: context,
+                    builder: (context) => DieResultDialog(),
+                  );
                 },
             style: style,
             child: Polymath.filled(
               dieText,
-              faces: DieFaces.d20,
-              style: theme.textTheme.headlineMedium,
+              style: theme.textTheme.titleLarge,
+              padding: 10,
             ),
           ),
           Positioned.fill(

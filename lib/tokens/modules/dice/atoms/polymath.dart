@@ -4,6 +4,7 @@ import 'package:dice_bag/tokens/models/enums/die_faces.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:stroke_text/stroke_text.dart';
 
 /// A brute-force adaptation of the Polymath font since the
 /// font has limitations, such as being only white
@@ -45,6 +46,9 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
     var color = filled
         ? theme.colorScheme.surface
         : theme.colorScheme.onSurface;
+    var reversedColor = filled
+        ? theme.colorScheme.onSurface
+        : theme.colorScheme.surface;
 
     var textStyle = style ?? theme.textTheme.headlineSmall;
     //TODO: Add a header and footer text option
@@ -62,21 +66,54 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
         Positioned.fill(
           child: Align(
             alignment: Alignment.center,
-            child: FittedBox(
-              fit: BoxFit.fitWidth,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: AppSpacing.lg,
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: AppSpacing.sm,
+              ),
+              child: StrokeText(
+                text: text,
+                textStyle: textStyle?.copyWith(
+                  color: color,
+                  fontWeight: FontWeight.bold,
+                  height: 1.5,
+                  /* shadows: [
+                    Shadow(
+                      // bottomLeft
+                      offset: Offset(
+                        -borderOffset,
+                        -borderOffset,
+                      ),
+                      color: reversedColor,
+                    ),
+                    Shadow(
+                      // bottomRight
+                      offset: Offset(
+                        borderOffset,
+                        -borderOffset,
+                      ),
+                      color: reversedColor,
+                    ),
+                    Shadow(
+                      // topRight
+                      offset: Offset(
+                        borderOffset,
+                        borderOffset,
+                      ),
+                      color: reversedColor,
+                    ),
+                    Shadow(
+                      // topLeft
+                      offset: Offset(
+                        -borderOffset,
+                        borderOffset,
+                      ),
+                      color: reversedColor,
+                    ),
+                  ], */
                 ),
-                child: Text(
-                  text,
-                  style: textStyle?.copyWith(
-                    color: color,
-                    fontWeight: FontWeight.bold,
-                    height: 1.5,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                strokeColor: reversedColor,
               ),
             ),
           ),
