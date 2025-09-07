@@ -1,5 +1,6 @@
 import 'package:dice_bag/tokens/app/app_sizing.dart';
 import 'package:dice_bag/tokens/models/enums/die_faces.dart';
+import 'package:dice_bag/tokens/modules/dice/die_button/components/atoms/die_reset_button.dart';
 import 'package:dice_bag/tokens/modules/dice/die_button/components/components/die_button_footer.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
 import 'package:flutter/foundation.dart';
@@ -52,6 +53,13 @@ class DieButton extends StatelessWidget {
                 height: AppSizing.md,
                 child: DieButtonFooter(),
               ),
+            ),
+          ),
+
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.topRight,
+              child: DieResetButton(),
             ),
           ),
         ],
