@@ -3,7 +3,15 @@ import 'package:dice_bag/tokens/modules/dice/die_button/components/atoms/die_ext
 import 'package:flutter/material.dart';
 
 class DieButtonFooter extends StatelessWidget {
-  const DieButtonFooter({super.key});
+  const DieButtonFooter({
+    super.key,
+    this.onMinusPressed,
+    this.onPlusPressed,
+    this.onExtraInputChanged,
+  });
+  final void Function()? onPlusPressed;
+  final void Function()? onMinusPressed;
+  final void Function(int)? onExtraInputChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +21,18 @@ class DieButtonFooter extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         DieAmountModifierButton(
-          increase: true,
-          onPressed: null,
+          increase: false,
+          onPressed: onMinusPressed,
           alignment: Alignment.bottomLeft,
         ),
-        Expanded(child: DieExtraModifierInput()),
+        Expanded(
+          child: DieExtraModifierInput(
+            onChanged: onExtraInputChanged,
+          ),
+        ),
         DieAmountModifierButton(
-          increase: false,
-          onPressed: null,
+          increase: true,
+          onPressed: onPlusPressed,
           alignment: Alignment.bottomRight,
         ),
       ],

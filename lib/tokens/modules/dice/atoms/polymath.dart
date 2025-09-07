@@ -47,7 +47,7 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
         : theme.colorScheme.onSurface;
 
     var textStyle = style ?? theme.textTheme.headlineSmall;
-
+    //TODO: Add a header and footer text option
     return Stack(
       alignment: Alignment.center,
       children: [

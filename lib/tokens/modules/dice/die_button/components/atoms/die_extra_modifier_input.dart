@@ -4,7 +4,9 @@ import 'package:flutter/services.dart';
 
 /// A Scroll that lets you increase the amount by that many
 class DieExtraModifierInput extends StatefulWidget {
-  const DieExtraModifierInput({super.key});
+  const DieExtraModifierInput({super.key, this.onChanged});
+
+  final void Function(int amount)? onChanged;
 
   @override
   State<DieExtraModifierInput> createState() =>
@@ -31,6 +33,11 @@ class _DieExtraModifierInputState
       inputFormatters: [
         FilteringTextInputFormatter.allow(RegExp(r'[0-9+-]')),
       ],
+      onChanged: (val) {
+        if (widget.onChanged != null) {
+          widget.onChanged!(int.tryParse(val) ?? 0);
+        }
+      },
       cursorHeight: 20,
       style: theme.textTheme.labelLarge,
       textAlign: TextAlign.center,
