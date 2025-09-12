@@ -4,7 +4,6 @@ import 'package:dice_bag/tokens/modules/dice/die_button/components/atoms/die_res
 import 'package:dice_bag/tokens/modules/dice/die_button/components/components/die_button_footer.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
 import 'package:dice_bag/tokens/modules/dice/die_result_dialog/die_result_dialog.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -87,6 +86,7 @@ class DieButton extends HookWidget {
               footerText: extraText,
               style: theme.textTheme.titleLarge,
               padding: 10,
+              faces: diceFaces,
             ),
           ),
           Positioned.fill(

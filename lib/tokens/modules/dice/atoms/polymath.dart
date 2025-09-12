@@ -71,24 +71,26 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
               padding: EdgeInsets.symmetric(
                 horizontal: AppSpacing.sm,
               ),
-              child: StrokeText(
-                text: text,
-                textStyle: textStyle?.copyWith(
-                  color: color,
-                  fontWeight: FontWeight.bold,
-                  height: 1.5,
-                ),
-                textAlign: TextAlign.center,
-                maxLines: 1,
-                strokeColor: reversedColor,
-              ),
+              child:
+                  //TODO: Make this scalable
+                  StrokeText(
+                    text: text,
+                    textStyle: textStyle?.copyWith(
+                      color: color,
+                      fontWeight: FontWeight.bold,
+                      height: 1.5,
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    strokeColor: reversedColor,
+                  ),
             ),
           ),
         ),
 
         if (footerText != null)
           Positioned.fill(
-            bottom: AppSpacing.md,
+            bottom: AppSpacing.sm,
             child: Align(
               alignment: Alignment.bottomCenter,
               child: PolymathFooter(
