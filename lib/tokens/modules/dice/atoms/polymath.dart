@@ -20,6 +20,7 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
   const Polymath(
     this.text, {
     super.key,
+    this.footerText,
     this.faces = DieFaces.d4,
     this.style,
     this.padding = 3.5,
@@ -27,6 +28,7 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
   });
 
   final String text;
+  final String? footerText;
   final DieFaces faces;
 
   final TextStyle? style;
@@ -76,40 +78,6 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
                   color: color,
                   fontWeight: FontWeight.bold,
                   height: 1.5,
-                  /* shadows: [
-                    Shadow(
-                      // bottomLeft
-                      offset: Offset(
-                        -borderOffset,
-                        -borderOffset,
-                      ),
-                      color: reversedColor,
-                    ),
-                    Shadow(
-                      // bottomRight
-                      offset: Offset(
-                        borderOffset,
-                        -borderOffset,
-                      ),
-                      color: reversedColor,
-                    ),
-                    Shadow(
-                      // topRight
-                      offset: Offset(
-                        borderOffset,
-                        borderOffset,
-                      ),
-                      color: reversedColor,
-                    ),
-                    Shadow(
-                      // topLeft
-                      offset: Offset(
-                        -borderOffset,
-                        borderOffset,
-                      ),
-                      color: reversedColor,
-                    ),
-                  ], */
                 ),
                 textAlign: TextAlign.center,
                 maxLines: 1,
@@ -118,6 +86,25 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
             ),
           ),
         ),
+
+        if (footerText != null)
+          Positioned.fill(
+            bottom: AppSpacing.md,
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: StrokeText(
+                text: footerText!,
+                textStyle: theme.textTheme.labelSmall?.copyWith(
+                  color: color,
+                  fontWeight: FontWeight.bold,
+                ),
+                strokeColor: reversedColor,
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ),
       ],
     );
   }
@@ -126,8 +113,8 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
     this.text, {
     super.key,
     this.faces = DieFaces.d4,
+    this.footerText,
     this.style,
     this.padding = 3.5,
-    this.filled = true,
-  });
+  }) : filled = true;
 }

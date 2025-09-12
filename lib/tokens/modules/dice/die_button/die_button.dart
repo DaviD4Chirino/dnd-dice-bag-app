@@ -14,10 +14,13 @@ class DieButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+
+    var extraTextController = useTextEditingController();
+
     var dieAmount = useState(1);
     var dieExtra = useState(0);
 
-    final ThemeData theme = Theme.of(context);
     var style = TextButton.styleFrom(
       padding: EdgeInsets.symmetric(
         vertical: AppSizing.lg,
@@ -31,10 +34,22 @@ class DieButton extends HookWidget {
       visualDensity: VisualDensity.compact,
     );
 
+    var extraText = dieExtra.value != 0
+        ? dieExtra.value > 0
+              ? "+${dieExtra.value}"
+              : "${dieExtra.value}"
+        : "";
+    var dieAmountText = dieAmount.value > 1
+        ? dieAmount.value.toString()
+        : "";
+    var diceFaces = DieFaces.d20;
+    var dieText =
+        "$dieAmountText${diceFaces.name.toUpperCase()}";
+
     void reset() {
       dieAmount.value = 1;
       dieExtra.value = 0;
-      dieExtra.value = 0;
+      extraTextController.text = "";
     }
 
     void increaseDieAmount() {
@@ -50,18 +65,6 @@ class DieButton extends HookWidget {
     void setExtra(int value) {
       dieExtra.value = value;
     }
-
-    var extraText = dieExtra.value != 0
-        ? dieExtra.value > 0
-              ? "(+${dieExtra.value})"
-              : "(${dieExtra.value})"
-        : "";
-    var dieAmountText = dieAmount.value > 1
-        ? dieAmount.value.toString()
-        : "";
-    var diceFaces = DieFaces.d20;
-    var dieText =
-        "$dieAmountText${diceFaces.name.toUpperCase()}$extraText";
 
     return SizedBox(
       width: 160,
@@ -81,6 +84,7 @@ class DieButton extends HookWidget {
             style: style,
             child: Polymath.filled(
               dieText,
+              footerText: extraText,
               style: theme.textTheme.titleLarge,
               padding: 10,
             ),
@@ -101,6 +105,7 @@ class DieButton extends HookWidget {
                   onMinusPressed: decreaseDieAmount,
                   onPlusPressed: increaseDieAmount,
                   onExtraInputChanged: setExtra,
+                  extraInputController: extraTextController,
                 ),
               ),
             ),

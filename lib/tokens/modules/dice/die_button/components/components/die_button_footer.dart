@@ -8,7 +8,10 @@ class DieButtonFooter extends StatelessWidget {
     this.onMinusPressed,
     this.onPlusPressed,
     this.onExtraInputChanged,
+    this.extraInputController,
   });
+  final TextEditingController? extraInputController;
+
   final void Function()? onPlusPressed;
   final void Function()? onMinusPressed;
   final void Function(int)? onExtraInputChanged;
@@ -28,6 +31,7 @@ class DieButtonFooter extends StatelessWidget {
         Expanded(
           child: DieExtraModifierInput(
             onChanged: onExtraInputChanged,
+            controller: extraInputController,
           ),
         ),
         DieAmountModifierButton(
