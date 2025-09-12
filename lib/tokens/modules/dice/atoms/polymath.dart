@@ -1,6 +1,7 @@
 import 'package:dice_bag/tokens/app/app_spacing.dart';
 import 'package:dice_bag/tokens/mixins/consumer_mixin.dart';
 import 'package:dice_bag/tokens/models/enums/die_faces.dart';
+import 'package:dice_bag/tokens/modules/dice/atoms/polymath_footer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -53,17 +54,15 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
         : theme.colorScheme.surface;
 
     var textStyle = style ?? theme.textTheme.headlineSmall;
-    //TODO: Add a header and footer text option
+    //TODO: Add a header text option
     return Stack(
       alignment: Alignment.center,
       children: [
-        SvgPicture.asset(
-          "assets/images/dice/dice_$isBold$chosenFaces.svg",
-          theme: SvgTheme(
-            currentColor: theme.colorScheme.onSurface,
-          ),
-          width: (style?.fontSize ?? 50) * padding,
-          height: (style?.fontSize ?? 50) * padding,
+        DieImage(
+          isBold: isBold,
+          chosenFaces: chosenFaces,
+          style: style,
+          padding: padding,
         ),
         Positioned.fill(
           child: Align(
@@ -92,16 +91,10 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
             bottom: AppSpacing.md,
             child: Align(
               alignment: Alignment.bottomCenter,
-              child: StrokeText(
-                text: footerText!,
-                textStyle: theme.textTheme.labelSmall?.copyWith(
-                  color: color,
-                  fontWeight: FontWeight.bold,
-                ),
-                strokeColor: reversedColor,
-                textAlign: TextAlign.center,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+              child: PolymathFooter(
+                text: footerText,
+                color: color,
+                reversedColor: reversedColor,
               ),
             ),
           ),
@@ -117,4 +110,30 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
     this.style,
     this.padding = 3.5,
   }) : filled = true;
+}
+
+class DieImage extends StatelessWidget {
+  const DieImage({
+    super.key,
+    required this.isBold,
+    required this.chosenFaces,
+    required this.style,
+    required this.padding,
+  });
+
+  final String isBold;
+  final String chosenFaces;
+  final TextStyle? style;
+  final double padding;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return SvgPicture.asset(
+      "assets/images/dice/dice_$isBold$chosenFaces.svg",
+      theme: SvgTheme(currentColor: theme.colorScheme.onSurface),
+      width: (style?.fontSize ?? 50) * padding,
+      height: (style?.fontSize ?? 50) * padding,
+    );
+  }
 }
