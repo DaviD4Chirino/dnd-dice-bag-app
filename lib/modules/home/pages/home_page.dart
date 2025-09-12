@@ -1,8 +1,6 @@
 import 'package:dice_bag/i18n/gen/strings.g.dart';
+import 'package:dice_bag/modules/home/modules/dice_roll/pages/dice_roll_page.dart';
 import 'package:dice_bag/tokens/app/app_routes.dart';
-import 'package:dice_bag/tokens/app/app_sizing.dart';
-import 'package:dice_bag/tokens/modules/dice/die_button/die_button.dart';
-import 'package:flexible_wrap/flexible_wrap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -11,14 +9,28 @@ class HomePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var t = strings.modules.home;
+    // var t = strings.modules.home;
+
+    var tabBarController = useTabController(initialLength: 2);
 
     // AppLocalizations t = AppLocalizations.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(t.title),
+        title: Text("Awesome Dice Roller"),
+        bottom: TabBar(
+          controller: tabBarController,
+          tabs: [
+            Tab(text: "Dice"),
+            Tab(text: "History"),
+          ],
+        ),
         actions: [
+          IconButton(
+            tooltip: strings.modules.settings.title,
+            onPressed: () {},
+            icon: const Icon(Icons.shopping_bag_rounded),
+          ),
           IconButton(
             tooltip: strings.modules.settings.title,
             onPressed: () =>
@@ -27,34 +39,12 @@ class HomePage extends HookWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Container(
-          constraints: BoxConstraints(maxWidth: 1024),
-          alignment: Alignment.topCenter,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: AppSizing.lg,
-                left: AppSizing.sm,
-                right: AppSizing.sm,
-                bottom: AppSizing.lg,
-              ),
-              child: FlexibleWrap(
-                spacing: AppSizing.xs,
-                runSpacing: AppSizing.xs,
-                children: [
-                  DieButton(onPressed: null),
-                  DieButton(onPressed: null),
-                  DieButton(onPressed: null),
-                  DieButton(onPressed: null),
-                  DieButton(onPressed: null),
-                  DieButton(onPressed: null),
-                  DieButton(onPressed: null),
-                ],
-              ),
-            ),
-          ),
-        ),
+      body: TabBarView(
+        controller: tabBarController,
+        children: [
+          DiceRollPage(),
+          Center(child: Text("Dice Bag Pag")),
+        ],
       ),
     );
   }
