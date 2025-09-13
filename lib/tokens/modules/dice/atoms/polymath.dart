@@ -24,7 +24,7 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
     this.footerText,
     this.faces = DieFaces.d4,
     this.style,
-    this.padding = 3.5,
+    this.padding = 1.5,
     this.filled = false,
   });
 
@@ -47,11 +47,11 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
         : faces.name;
 
     var color = filled
-        ? theme.colorScheme.surface
-        : theme.colorScheme.onSurface;
+        ? theme.colorScheme.surfaceContainerLowest
+        : theme.colorScheme.inverseSurface;
     var reversedColor = filled
-        ? theme.colorScheme.onSurface
-        : theme.colorScheme.surface;
+        ? theme.colorScheme.inverseSurface
+        : theme.colorScheme.surfaceContainerLowest;
 
     var textStyle = style ?? theme.textTheme.headlineSmall;
     //TODO: Add a header text option
@@ -83,6 +83,7 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     strokeColor: reversedColor,
+                    strokeWidth: 3.5,
                   ),
             ),
           ),
@@ -123,19 +124,21 @@ class DieImage extends StatelessWidget {
     required this.padding,
   });
 
-  final String isBold;
-  final String chosenFaces;
+  final String? isBold;
+  final String? chosenFaces;
   final TextStyle? style;
-  final double padding;
+  final double? padding;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return SvgPicture.asset(
       "assets/images/dice/dice_$isBold$chosenFaces.svg",
-      theme: SvgTheme(currentColor: theme.colorScheme.onSurface),
-      width: (style?.fontSize ?? 50) * padding,
-      height: (style?.fontSize ?? 50) * padding,
+      theme: SvgTheme(
+        currentColor: theme.colorScheme.inverseSurface,
+      ),
+      width: (style?.fontSize ?? 50) * (padding ?? 1.5),
+      height: (style?.fontSize ?? 50) * (padding ?? 1.5),
     );
   }
 }

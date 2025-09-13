@@ -1,5 +1,6 @@
 import 'package:dice_bag/i18n/gen/strings.g.dart';
 import 'package:dice_bag/modules/home/modules/dice_roll/pages/dice_roll_page.dart';
+import 'package:dice_bag/modules/home/modules/roll_history/pages/roll_history_page.dart';
 import 'package:dice_bag/tokens/app/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -41,10 +42,7 @@ class HomePage extends HookWidget {
       ),
       body: TabBarView(
         controller: tabBarController,
-        children: [
-          DiceRollPage(),
-          Center(child: Text("Dice Bag Pag")),
-        ],
+        children: const [DiceRollPage(), RollHistoryPage()],
       ),
     );
   }
