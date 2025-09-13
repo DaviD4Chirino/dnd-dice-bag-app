@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:dice_bag/tokens/models/dice/die_roll_data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'gen/die.freezed.dart';
 part 'gen/die.g.dart';
@@ -58,17 +59,17 @@ class Die with _$Die {
   /// the first element is the total amount with modifiers
   /// the rest are all the individual rolls.
   /// This cannot be negative
-  List<int> roll() {
+  DieRollData roll() {
     List<int> results = [];
     for (var i = 0; i < amount; i++) {
       results.add((Random().nextInt(faces) + 1));
     }
-    results.insert(
-      0,
-      max(0, results.reduce((a, b) => a + b) + modifier),
-    );
 
-    return results;
+    return DieRollData(
+      die: this,
+      rolls: results,
+      date: DateTime.now(),
+    );
   }
 
   factory Die.fromJson(Map<String, Object?> json) =>

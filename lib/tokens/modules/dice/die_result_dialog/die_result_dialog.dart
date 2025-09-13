@@ -11,9 +11,9 @@ class DieResultDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
 
-    final results = die.roll();
-    final total = results.removeAt(0);
-    final resultString = results.join(" | ");
+    final roll = die.roll();
+    final total = roll.totalValue;
+    final resultString = roll.rolls.join(" | ");
 
     return AlertDialog(
       title: Text(
@@ -31,7 +31,7 @@ class DieResultDialog extends StatelessWidget {
             padding: 5,
             faces: die.faces,
           ),
-          if (results.length > 1)
+          if (roll.rolls.length > 1)
             Text(
               resultString,
               textAlign: TextAlign.center,
