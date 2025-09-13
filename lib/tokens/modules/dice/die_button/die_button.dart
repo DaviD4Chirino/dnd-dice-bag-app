@@ -89,6 +89,7 @@ class DieButton extends HookConsumerWidget {
                 () {
                   var rollData = copyDie.roll();
                   rollHistoryNotifier.registerRoll(rollData);
+
                   showDialog(
                     context: context,
                     builder: (context) =>
