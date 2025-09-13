@@ -38,7 +38,7 @@ final class DiceBagNotifierProvider
   }
 }
 
-String _$diceBagNotifierHash() => r'6c6927a29b83c27bb25ae69e11866e518c775068';
+String _$diceBagNotifierHash() => r'b9aa01ea95844543bda71d2ac0e6e8790a968fc8';
 
 abstract class _$DiceBagNotifier extends $Notifier<List<DiceSet>> {
   List<DiceSet> build();

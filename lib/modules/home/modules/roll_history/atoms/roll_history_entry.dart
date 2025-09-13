@@ -25,7 +25,7 @@ class RollHistoryEntry extends StatelessWidget {
         vertical: AppSpacing.lg,
         horizontal: AppSpacing.md,
       ),
-      leading: Polymath.fromDie(
+      leading: Polymath(
         rollData.totalValue.toString(),
         die: rollData.die,
         style: theme.textTheme.bodyLarge,

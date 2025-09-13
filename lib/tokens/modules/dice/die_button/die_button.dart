@@ -97,7 +97,7 @@ class DieButton extends HookConsumerWidget {
                   );
                 },
             style: style,
-            child: Polymath.fromDie(
+            child: Polymath(
               dieText,
               die: copyDie,
               footerText: extraText,

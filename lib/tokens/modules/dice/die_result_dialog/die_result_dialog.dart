@@ -21,19 +21,19 @@ class DieResultDialog extends StatelessWidget {
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Polymath.filled(
+          Polymath(
             rollData.totalValue.toString(),
-            style: theme.textTheme.headlineLarge,
-            padding: 5,
-            faces: rollData.die.faces,
+            die: rollData.die,
+            style: theme.textTheme.displayMedium,
+            padding: 3,
           ),
-          if (rollData.rolls.length > 1)
-            Text(
-              rollData.rollStrings,
-              textAlign: TextAlign.center,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-            ),
+          Text(
+            rollData.rollStrings,
+            textAlign: TextAlign.center,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+            style: theme.textTheme.bodyMedium,
+          ),
         ],
       ),
       actions: [

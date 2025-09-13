@@ -21,30 +21,28 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
   const Polymath(
     this.text, {
     super.key,
+    required this.die,
     this.footerText,
-    this.faces = 20,
     this.style,
     this.padding = 1.5,
-    this.filled = false,
   });
+  final Die die;
 
   final String text;
   final String? footerText;
-  final int faces;
 
   final TextStyle? style;
   final double padding;
-  final bool filled;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
 
-    var color = filled
+    var color = die.filled
         ? theme.colorScheme.surfaceContainerLowest
         : theme.colorScheme.inverseSurface;
 
-    var reversedColor = filled
+    var reversedColor = die.filled
         ? theme.colorScheme.inverseSurface
         : theme.colorScheme.surfaceContainerLowest;
 
@@ -54,9 +52,7 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
       alignment: Alignment.center,
       children: [
         DieImage(
-          alt: true,
-          filled: filled,
-          faces: faces,
+          die,
           width: (style?.fontSize ?? 50) * padding,
           height: (style?.fontSize ?? 50) * padding,
           theme: SvgTheme(
@@ -103,66 +99,28 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
       ],
     );
   }
-
-  Polymath.filled(
-    this.text, {
-    super.key,
-    this.faces = 4,
-    this.footerText,
-    this.style,
-    this.padding = 3.5,
-  }) : filled = true;
-
-  Polymath.fromDie(
-    this.text, {
-    required Die die,
-    super.key,
-    this.footerText,
-    this.style,
-    this.padding = 3.5,
-  }) : faces = die.faces,
-       filled = die.filled;
 }
 
 class DieImage extends StatelessWidget {
-  const DieImage({
+  const DieImage(
+    this.die, {
     super.key,
-    required this.faces,
-    this.filled = false,
-    this.alt = false,
     this.width,
     this.height,
     this.theme,
   });
 
-  /// Only d12 has an alt
-  final bool alt;
-
-  final bool filled;
+  final Die die;
 
   final double? width;
   final double? height;
-
-  final int faces;
 
   final SvgTheme? theme;
 
   @override
   Widget build(BuildContext context) {
-    final existingFace =
-        faces == 4 ||
-            faces == 6 ||
-            faces == 8 ||
-            faces == 12 ||
-            faces == 20
-        ? faces == 12 && alt
-              ? "d12_alt"
-              : "d$faces"
-        : "d4";
-    final isFilled = filled ? "bold_" : "";
-
     return SvgPicture.asset(
-      "assets/images/dice/dice_$isFilled$existingFace.svg",
+      die.imagePath,
       theme: theme,
       width:
           width /* (style?.fontSize ?? 50) * (padding ?? 1.5) */,

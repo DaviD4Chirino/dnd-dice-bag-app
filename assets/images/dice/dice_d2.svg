@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <rect width="24" height="24" fill="#000000" fill-rule="evenodd" fill-opacity="0" />
+    <g transform="translate(2 2)">
+      <path
+        d="M0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10Z" />
+      <path
+        d="M10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0ZM3.63604 16.364Q1 13.7279 1 10Q1 6.27208 3.63604 3.63604Q6.27208 1 10 1Q13.7279 1 16.364 3.63604Q19 6.27207 19 10Q19 13.7279 16.364 16.364Q13.7279 19 10 19Q6.27208 19 3.63604 16.364Z"
+        fill="currentColor" fill-rule="evenodd" />
+    </g>
+  </g>
+</svg>

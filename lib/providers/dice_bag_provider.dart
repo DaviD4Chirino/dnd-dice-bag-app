@@ -12,12 +12,14 @@ class DiceBagNotifier extends _$DiceBagNotifier {
       DiceSet(
         label: "Generated Dice Bag",
         dice: [
+          Die(faces: 2),
           Die(faces: 4),
           Die(faces: 6),
           Die(faces: 8),
           Die(faces: 10),
           Die(faces: 12),
           Die(faces: 20),
+          Die(faces: 100),
         ],
       ),
     ];

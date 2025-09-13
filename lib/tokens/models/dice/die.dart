@@ -41,18 +41,21 @@ class Die with _$Die {
   String get label => "${amountLabel}D$faces $modifierLabel";
 
   String get imagePath {
+    //? Maybe store this in an easy-to-add array or some shit
     final existingFace =
-        faces == 4 ||
+        faces == 2 ||
+            faces == 4 ||
             faces == 6 ||
             faces == 8 ||
+            faces == 10 ||
             faces == 12 ||
             faces == 20
         ? faces == 12 && alt
               ? "d12_alt"
               : "d$faces"
-        : "d4";
-
-    return "assets/images/dice/dice_$filled$existingFace.svg";
+        : "d_any";
+    final bold = filled ? "bold_" : "";
+    return "assets/images/dice/dice_$bold$existingFace.svg";
   }
 
   /// It generates random numbers akin to a dice roll
