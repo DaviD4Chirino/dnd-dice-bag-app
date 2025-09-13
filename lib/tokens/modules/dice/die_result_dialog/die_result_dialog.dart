@@ -1,6 +1,8 @@
 import 'package:dice_bag/tokens/models/dice/die_roll_data.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
+import 'package:dice_bag/tokens/utils/copy_to_clipboard.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class DieResultDialog extends StatelessWidget {
   const DieResultDialog(this.rollData, {super.key});
@@ -38,7 +40,12 @@ class DieResultDialog extends StatelessWidget {
       ),
       actions: [
         FilledButton.tonalIcon(
-          onPressed: () {},
+          onPressed: () {
+            copyToClipboard(
+              "${rollData.die.label} = ${rollData.totalValue}",
+              context: context,
+            );
+          },
           icon: Icon(Icons.copy_rounded),
           label: Text("Copy"),
         ),
@@ -46,3 +53,4 @@ class DieResultDialog extends StatelessWidget {
     );
   }
 }
+//10D100(-30) = 572

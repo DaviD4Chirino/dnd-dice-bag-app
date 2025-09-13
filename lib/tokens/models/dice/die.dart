@@ -38,7 +38,7 @@ class Die with _$Die {
       : "";
   String get amountLabel => amount != 1 ? "$amount" : "";
 
-  String get label => "${amountLabel}D$faces $modifierLabel";
+  String get label => "${amountLabel}D$faces$modifierLabel";
 
   String get imagePath {
     //? Maybe store this in an easy-to-add array or some shit

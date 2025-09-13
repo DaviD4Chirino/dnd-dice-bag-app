@@ -62,24 +62,15 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
         Positioned.fill(
           child: Align(
             alignment: Alignment.center,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: AppSpacing.sm,
+            child: StrokeText(
+              text: text,
+              textStyle: textStyle?.copyWith(
+                color: color,
+                fontWeight: FontWeight.bold,
               ),
-              child:
-                  //TODO: Make this scalable
-                  StrokeText(
-                    text: text,
-                    textStyle: textStyle?.copyWith(
-                      color: color,
-                      fontWeight: FontWeight.bold,
-                      height: 1.5,
-                    ),
-                    textAlign: TextAlign.center,
-                    maxLines: 1,
-                    strokeColor: reversedColor,
-                    strokeWidth: 3.5,
-                  ),
+              textAlign: TextAlign.center,
+              strokeColor: reversedColor,
+              strokeWidth: 3.5,
             ),
           ),
         ),
@@ -129,3 +120,30 @@ class DieImage extends StatelessWidget {
     );
   }
 }
+//45D100(+3000) = 517499D100(+9000000000) = 9000005106
+
+class OutlineText extends StatelessWidget {
+  const OutlineText(this.child, {super.key});
+  final Text child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: Align(
+            alignment: Alignment.center,
+            child: child,
+          ),
+        ),
+        Positioned.fill(
+          child: Align(
+            alignment: Alignment.center,
+            child: Text(child.data ?? ""),
+          ),
+        ),
+      ],
+    );
+  }
+}
+//21D100 = 1144
