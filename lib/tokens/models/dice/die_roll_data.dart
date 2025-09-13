@@ -17,6 +17,7 @@ class DieRollData with _$DieRollData {
 
   factory DieRollData.fromJson(Map<String, Object?> json) =>
       _$DieRollDataFromJson(json);
+  Map<String, Object?> toJson() => _$DieRollDataToJson(this);
 
   @override
   Die die;
