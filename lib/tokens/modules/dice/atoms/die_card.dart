@@ -1,5 +1,4 @@
 import 'package:dice_bag/tokens/app/app_sizing.dart';
-import 'package:dice_bag/tokens/models/enums/die_faces.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +17,7 @@ class DieCard extends StatelessWidget {
       ),
       child: Polymath.filled(
         "54",
-        faces: DieFaces.d6,
+        faces: 6,
         style: theme.textTheme.displayMedium,
       ),
     );

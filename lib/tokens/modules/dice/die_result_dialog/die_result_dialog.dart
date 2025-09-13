@@ -1,23 +1,23 @@
-import 'dart:math';
-
+import 'package:dice_bag/tokens/models/dice/die.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
 import 'package:flutter/material.dart';
 
 class DieResultDialog extends StatelessWidget {
-  const DieResultDialog({super.key});
+  const DieResultDialog(this.die, {super.key});
+
+  final Die die;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final results = List.generate(
-      2,
-      (index) => "${Random().nextInt(100)}",
-    );
+
+    final results = die.roll();
+    final total = results.removeAt(0);
     final resultString = results.join(" | ");
 
     return AlertDialog(
       title: Text(
-        "99D20(+323584621512312312321)",
+        die.label,
         textAlign: TextAlign.center,
         overflow: TextOverflow.ellipsis,
         maxLines: 1,
@@ -26,9 +26,10 @@ class DieResultDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Polymath.filled(
-            "99999999999999",
+            total.toString(),
             style: theme.textTheme.headlineLarge,
             padding: 5,
+            faces: die.faces,
           ),
           if (results.length > 1)
             Text(

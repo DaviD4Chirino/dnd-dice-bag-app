@@ -1,6 +1,5 @@
 import 'package:dice_bag/tokens/app/app_spacing.dart';
 import 'package:dice_bag/tokens/mixins/consumer_mixin.dart';
-import 'package:dice_bag/tokens/models/enums/die_faces.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath_footer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,7 +21,7 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
     this.text, {
     super.key,
     this.footerText,
-    this.faces = DieFaces.d4,
+    this.faces = 20,
     this.style,
     this.padding = 1.5,
     this.filled = false,
@@ -30,7 +29,7 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
 
   final String text;
   final String? footerText;
-  final DieFaces faces;
+  final int faces;
 
   final TextStyle? style;
   final double padding;
@@ -40,15 +39,10 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
 
-    final isBold = filled ? "bold_" : "";
-
-    final String chosenFaces = faces == DieFaces.d12Alt
-        ? "d12_alt"
-        : faces.name;
-
     var color = filled
         ? theme.colorScheme.surfaceContainerLowest
         : theme.colorScheme.inverseSurface;
+
     var reversedColor = filled
         ? theme.colorScheme.inverseSurface
         : theme.colorScheme.surfaceContainerLowest;
@@ -59,10 +53,14 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
       alignment: Alignment.center,
       children: [
         DieImage(
-          isBold: isBold,
-          chosenFaces: chosenFaces,
-          style: style,
-          padding: padding,
+          alt: true,
+          filled: filled,
+          faces: faces,
+          width: (style?.fontSize ?? 50) * padding,
+          height: (style?.fontSize ?? 50) * padding,
+          theme: SvgTheme(
+            currentColor: theme.colorScheme.inverseSurface,
+          ),
         ),
         Positioned.fill(
           child: Align(
@@ -108,7 +106,7 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
   Polymath.filled(
     this.text, {
     super.key,
-    this.faces = DieFaces.d4,
+    this.faces = 4,
     this.footerText,
     this.style,
     this.padding = 3.5,
@@ -118,27 +116,47 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
 class DieImage extends StatelessWidget {
   const DieImage({
     super.key,
-    required this.isBold,
-    required this.chosenFaces,
-    required this.style,
-    required this.padding,
+    required this.faces,
+    this.filled = false,
+    this.alt = false,
+    this.width,
+    this.height,
+    this.theme,
   });
 
-  final String? isBold;
-  final String? chosenFaces;
-  final TextStyle? style;
-  final double? padding;
+  /// Only d12 has an alt
+  final bool alt;
+
+  final bool filled;
+
+  final double? width;
+  final double? height;
+
+  final int faces;
+
+  final SvgTheme? theme;
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
+    final existingFace =
+        faces == 4 ||
+            faces == 6 ||
+            faces == 8 ||
+            faces == 12 ||
+            faces == 20
+        ? faces == 12 && alt
+              ? "d12_alt"
+              : "d$faces"
+        : "d4";
+    final isFilled = filled ? "bold_" : "";
+
     return SvgPicture.asset(
-      "assets/images/dice/dice_$isBold$chosenFaces.svg",
-      theme: SvgTheme(
-        currentColor: theme.colorScheme.inverseSurface,
-      ),
-      width: (style?.fontSize ?? 50) * (padding ?? 1.5),
-      height: (style?.fontSize ?? 50) * (padding ?? 1.5),
+      "assets/images/dice/dice_$isFilled$existingFace.svg",
+      theme: theme,
+      width:
+          width /* (style?.fontSize ?? 50) * (padding ?? 1.5) */,
+      height:
+          height /*  (style?.fontSize ?? 50) * (padding ?? 1.5) */,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:dice_bag/tokens/app/app_sizing.dart';
+import 'package:dice_bag/tokens/models/dice/die.dart';
 import 'package:dice_bag/tokens/models/enums/die_faces.dart';
 import 'package:dice_bag/tokens/modules/dice/die_button/components/atoms/die_reset_button.dart';
 import 'package:dice_bag/tokens/modules/dice/die_button/components/components/die_button_footer.dart';
@@ -42,8 +43,7 @@ class DieButton extends HookWidget {
         ? dieAmount.value.toString()
         : "";
     var diceFaces = DieFaces.d20;
-    var dieText =
-        "$dieAmountText${diceFaces.name.toUpperCase()}";
+    var dieText = "$dieAmountText${diceFaces.label}";
 
     void reset() {
       dieAmount.value = 1;
@@ -77,7 +77,13 @@ class DieButton extends HookWidget {
                 () {
                   showDialog(
                     context: context,
-                    builder: (context) => DieResultDialog(),
+                    builder: (context) => DieResultDialog(
+                      Die(
+                        faces: diceFaces.amount,
+                        amount: dieAmount.value,
+                        modifier: dieExtra.value,
+                      ),
+                    ),
                   );
                 },
             style: style,
@@ -86,7 +92,7 @@ class DieButton extends HookWidget {
               footerText: extraText,
               style: theme.textTheme.titleLarge,
               padding: 10,
-              faces: diceFaces,
+              faces: diceFaces.amount,
             ),
           ),
           Positioned.fill(
