@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of '../dice_bag.dart';
+part of '../dice_set.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,22 +13,22 @@ part of '../dice_bag.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$DiceBag {
+mixin _$DiceSet {
 
  String get label; List<Die> get dice;
-/// Create a copy of DiceBag
+/// Create a copy of DiceSet
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$DiceBagCopyWith<DiceBag> get copyWith => _$DiceBagCopyWithImpl<DiceBag>(this as DiceBag, _$identity);
+$DiceSetCopyWith<DiceSet> get copyWith => _$DiceSetCopyWithImpl<DiceSet>(this as DiceSet, _$identity);
 
-  /// Serializes this DiceBag to a JSON map.
+  /// Serializes this DiceSet to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DiceBag&&(identical(other.label, label) || other.label == label)&&const DeepCollectionEquality().equals(other.dice, dice));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DiceSet&&(identical(other.label, label) || other.label == label)&&const DeepCollectionEquality().equals(other.dice, dice));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -37,15 +37,15 @@ int get hashCode => Object.hash(runtimeType,label,const DeepCollectionEquality()
 
 @override
 String toString() {
-  return 'DiceBag(label: $label, dice: $dice)';
+  return 'DiceSet(label: $label, dice: $dice)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $DiceBagCopyWith<$Res>  {
-  factory $DiceBagCopyWith(DiceBag value, $Res Function(DiceBag) _then) = _$DiceBagCopyWithImpl;
+abstract mixin class $DiceSetCopyWith<$Res>  {
+  factory $DiceSetCopyWith(DiceSet value, $Res Function(DiceSet) _then) = _$DiceSetCopyWithImpl;
 @useResult
 $Res call({
  String label, List<Die> dice
@@ -56,14 +56,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$DiceBagCopyWithImpl<$Res>
-    implements $DiceBagCopyWith<$Res> {
-  _$DiceBagCopyWithImpl(this._self, this._then);
+class _$DiceSetCopyWithImpl<$Res>
+    implements $DiceSetCopyWith<$Res> {
+  _$DiceSetCopyWithImpl(this._self, this._then);
 
-  final DiceBag _self;
-  final $Res Function(DiceBag) _then;
+  final DiceSet _self;
+  final $Res Function(DiceSet) _then;
 
-/// Create a copy of DiceBag
+/// Create a copy of DiceSet
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? label = null,Object? dice = null,}) {
   return _then(_self.copyWith(
@@ -76,8 +76,8 @@ as List<Die>,
 }
 
 
-/// Adds pattern-matching-related methods to [DiceBag].
-extension DiceBagPatterns on DiceBag {
+/// Adds pattern-matching-related methods to [DiceSet].
+extension DiceSetPatterns on DiceSet {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -90,10 +90,10 @@ extension DiceBagPatterns on DiceBag {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _DiceBag value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _DiceSet value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _DiceBag() when $default != null:
+case _DiceSet() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -112,10 +112,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _DiceBag value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _DiceSet value)  $default,){
 final _that = this;
 switch (_that) {
-case _DiceBag():
+case _DiceSet():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -133,10 +133,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _DiceBag value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _DiceSet value)?  $default,){
 final _that = this;
 switch (_that) {
-case _DiceBag() when $default != null:
+case _DiceSet() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -156,7 +156,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String label,  List<Die> dice)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _DiceBag() when $default != null:
+case _DiceSet() when $default != null:
 return $default(_that.label,_that.dice);case _:
   return orElse();
 
@@ -177,7 +177,7 @@ return $default(_that.label,_that.dice);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String label,  List<Die> dice)  $default,) {final _that = this;
 switch (_that) {
-case _DiceBag():
+case _DiceSet():
 return $default(_that.label,_that.dice);case _:
   throw StateError('Unexpected subclass');
 
@@ -197,7 +197,7 @@ return $default(_that.label,_that.dice);case _:
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String label,  List<Die> dice)?  $default,) {final _that = this;
 switch (_that) {
-case _DiceBag() when $default != null:
+case _DiceSet() when $default != null:
 return $default(_that.label,_that.dice);case _:
   return null;
 
@@ -209,9 +209,9 @@ return $default(_that.label,_that.dice);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _DiceBag implements DiceBag {
-  const _DiceBag({required this.label, required final  List<Die> dice}): _dice = dice;
-  factory _DiceBag.fromJson(Map<String, dynamic> json) => _$DiceBagFromJson(json);
+class _DiceSet implements DiceSet {
+  const _DiceSet({required this.label, required final  List<Die> dice}): _dice = dice;
+  factory _DiceSet.fromJson(Map<String, dynamic> json) => _$DiceSetFromJson(json);
 
 @override final  String label;
  final  List<Die> _dice;
@@ -222,20 +222,20 @@ class _DiceBag implements DiceBag {
 }
 
 
-/// Create a copy of DiceBag
+/// Create a copy of DiceSet
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$DiceBagCopyWith<_DiceBag> get copyWith => __$DiceBagCopyWithImpl<_DiceBag>(this, _$identity);
+_$DiceSetCopyWith<_DiceSet> get copyWith => __$DiceSetCopyWithImpl<_DiceSet>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$DiceBagToJson(this, );
+  return _$DiceSetToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DiceBag&&(identical(other.label, label) || other.label == label)&&const DeepCollectionEquality().equals(other._dice, _dice));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DiceSet&&(identical(other.label, label) || other.label == label)&&const DeepCollectionEquality().equals(other._dice, _dice));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -244,15 +244,15 @@ int get hashCode => Object.hash(runtimeType,label,const DeepCollectionEquality()
 
 @override
 String toString() {
-  return 'DiceBag(label: $label, dice: $dice)';
+  return 'DiceSet(label: $label, dice: $dice)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$DiceBagCopyWith<$Res> implements $DiceBagCopyWith<$Res> {
-  factory _$DiceBagCopyWith(_DiceBag value, $Res Function(_DiceBag) _then) = __$DiceBagCopyWithImpl;
+abstract mixin class _$DiceSetCopyWith<$Res> implements $DiceSetCopyWith<$Res> {
+  factory _$DiceSetCopyWith(_DiceSet value, $Res Function(_DiceSet) _then) = __$DiceSetCopyWithImpl;
 @override @useResult
 $Res call({
  String label, List<Die> dice
@@ -263,17 +263,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$DiceBagCopyWithImpl<$Res>
-    implements _$DiceBagCopyWith<$Res> {
-  __$DiceBagCopyWithImpl(this._self, this._then);
+class __$DiceSetCopyWithImpl<$Res>
+    implements _$DiceSetCopyWith<$Res> {
+  __$DiceSetCopyWithImpl(this._self, this._then);
 
-  final _DiceBag _self;
-  final $Res Function(_DiceBag) _then;
+  final _DiceSet _self;
+  final $Res Function(_DiceSet) _then;
 
-/// Create a copy of DiceBag
+/// Create a copy of DiceSet
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? label = null,Object? dice = null,}) {
-  return _then(_DiceBag(
+  return _then(_DiceSet(
 label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
 as String,dice: null == dice ? _self._dice : dice // ignore: cast_nullable_to_non_nullable
 as List<Die>,

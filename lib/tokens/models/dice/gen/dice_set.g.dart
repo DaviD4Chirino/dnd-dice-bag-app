@@ -1,19 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '../dice_bag.dart';
+part of '../dice_set.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_DiceBag _$DiceBagFromJson(Map<String, dynamic> json) => _DiceBag(
+_DiceSet _$DiceSetFromJson(Map<String, dynamic> json) => _DiceSet(
   label: json['label'] as String,
   dice: (json['dice'] as List<dynamic>)
       .map((e) => Die.fromJson(e as Map<String, dynamic>))
       .toList(),
 );
 
-Map<String, dynamic> _$DiceBagToJson(_DiceBag instance) => <String, dynamic>{
+Map<String, dynamic> _$DiceSetToJson(_DiceSet instance) => <String, dynamic>{
   'label': instance.label,
   'dice': instance.dice,
 };
