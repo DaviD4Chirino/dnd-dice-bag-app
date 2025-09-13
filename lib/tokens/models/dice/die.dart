@@ -2,10 +2,12 @@ import 'dart:math';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'gen/die.freezed.dart';
+part 'gen/die.g.dart';
 
 @freezed
+@JsonSerializable()
 class Die with _$Die {
-  const Die({
+  Die({
     required this.faces,
     this.amount = 1,
     this.modifier = 0,
@@ -17,10 +19,10 @@ class Die with _$Die {
   final int faces;
 
   @override
-  final int amount;
+  int amount;
 
   @override
-  final int modifier;
+  int modifier;
 
   @override
   final bool filled;
@@ -36,6 +38,21 @@ class Die with _$Die {
   String get amountLabel => amount != 1 ? "$amount" : "";
 
   String get label => "${amountLabel}D$faces $modifierLabel";
+
+  String get imagePath {
+    final existingFace =
+        faces == 4 ||
+            faces == 6 ||
+            faces == 8 ||
+            faces == 12 ||
+            faces == 20
+        ? faces == 12 && alt
+              ? "d12_alt"
+              : "d$faces"
+        : "d4";
+
+    return "assets/images/dice/dice_$filled$existingFace.svg";
+  }
 
   /// It generates random numbers akin to a dice roll
   /// the first element is the total amount with modifiers
@@ -54,20 +71,9 @@ class Die with _$Die {
     return results;
   }
 
-  String get imagePath {
-    final existingFace =
-        faces == 4 ||
-            faces == 6 ||
-            faces == 8 ||
-            faces == 12 ||
-            faces == 20
-        ? faces == 12 && alt
-              ? "d12_alt"
-              : "d$faces"
-        : "d4";
-
-    return "assets/images/dice/dice_$filled$existingFace.svg";
-  }
+  factory Die.fromJson(Map<String, Object?> json) =>
+      _$DieFromJson(json);
+  Map<String, Object?> toJson() => _$DieToJson(this);
 }
 // 1D20 = 1-20
 // 2D20 = 1-20*2

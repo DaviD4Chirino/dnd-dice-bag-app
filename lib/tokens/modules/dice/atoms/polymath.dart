@@ -1,5 +1,6 @@
 import 'package:dice_bag/tokens/app/app_spacing.dart';
 import 'package:dice_bag/tokens/mixins/consumer_mixin.dart';
+import 'package:dice_bag/tokens/models/dice/die.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath_footer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -111,6 +112,16 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
     this.style,
     this.padding = 3.5,
   }) : filled = true;
+
+  Polymath.fromDie(
+    this.text, {
+    required Die die,
+    super.key,
+    this.footerText,
+    this.style,
+    this.padding = 3.5,
+  }) : faces = die.faces,
+       filled = die.filled;
 }
 
 class DieImage extends StatelessWidget {

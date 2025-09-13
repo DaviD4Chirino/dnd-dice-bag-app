@@ -11,10 +11,11 @@ part of '../die.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$Die {
 
- int get faces; int get amount; int get modifier; bool get filled; bool get alt;
+ int get faces; int get amount; set amount(int value); int get modifier; set modifier(int value); bool get filled; bool get alt;
 /// Create a copy of Die
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,7 +29,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Die&&(identical(other.faces, faces) || other.faces == faces)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.modifier, modifier) || other.modifier == modifier)&&(identical(other.filled, filled) || other.filled == filled)&&(identical(other.alt, alt) || other.alt == alt));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,faces,amount,modifier,filled,alt);
 

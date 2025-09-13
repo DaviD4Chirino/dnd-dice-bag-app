@@ -1,6 +1,5 @@
 import 'package:dice_bag/tokens/app/app_sizing.dart';
 import 'package:dice_bag/tokens/models/dice/die.dart';
-import 'package:dice_bag/tokens/models/enums/die_faces.dart';
 import 'package:dice_bag/tokens/modules/dice/die_button/components/atoms/die_reset_button.dart';
 import 'package:dice_bag/tokens/modules/dice/die_button/components/components/die_button_footer.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
@@ -9,12 +8,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class DieButton extends HookWidget {
-  const DieButton({super.key, this.onPressed});
+  const DieButton(this.die, {super.key, this.onPressed});
   final VoidCallback? onPressed;
+  final Die die;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+
+    var copyDie = die.copyWith();
 
     var extraTextController = useTextEditingController();
 
@@ -42,8 +44,7 @@ class DieButton extends HookWidget {
     var dieAmountText = dieAmount.value > 1
         ? dieAmount.value.toString()
         : "";
-    var diceFaces = DieFaces.d20;
-    var dieText = "$dieAmountText${diceFaces.label}";
+    var dieText = "$dieAmountText${copyDie.label}";
 
     void reset() {
       dieAmount.value = 1;
@@ -65,6 +66,12 @@ class DieButton extends HookWidget {
       dieExtra.value = value;
     }
 
+    useEffect(() {
+      copyDie.amount = dieAmount.value;
+      copyDie.modifier = dieExtra.value;
+      return;
+    }, [dieAmount.value, dieExtra.value]);
+
     return SizedBox(
       width: 160,
       height: 160,
@@ -77,22 +84,17 @@ class DieButton extends HookWidget {
                 () {
                   showDialog(
                     context: context,
-                    builder: (context) => DieResultDialog(
-                      Die(
-                        faces: diceFaces.amount,
-                        amount: dieAmount.value,
-                        modifier: dieExtra.value,
-                      ),
-                    ),
+                    builder: (context) =>
+                        DieResultDialog(copyDie),
                   );
                 },
             style: style,
-            child: Polymath.filled(
+            child: Polymath.fromDie(
               dieText,
+              die: copyDie,
               footerText: extraText,
               style: theme.textTheme.titleLarge,
               padding: 10,
-              faces: diceFaces.amount,
             ),
           ),
           Positioned.fill(
