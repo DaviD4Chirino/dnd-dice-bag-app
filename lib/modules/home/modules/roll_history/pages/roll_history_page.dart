@@ -14,7 +14,7 @@ class RollHistoryPage extends ConsumerWidget {
       body: ListView.separated(
         itemBuilder: (context, index) =>
             RollHistoryEntry(rollHistory[index]),
-        separatorBuilder: (context, index) => Divider(),
+        separatorBuilder: (context, index) => Divider(height: 0),
         itemCount: rollHistory.length,
       ),
     );

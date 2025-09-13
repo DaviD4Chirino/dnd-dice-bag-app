@@ -1,21 +1,33 @@
 import 'package:dice_bag/extensions/double_extensions/sized_box_extension.dart';
+import 'package:dice_bag/tokens/app/app_sizing.dart';
 import 'package:dice_bag/tokens/app/app_spacing.dart';
 import 'package:dice_bag/tokens/models/dice/die_roll_data.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
+import 'package:dice_bag/tokens/modules/dice/die_result_dialog/die_result_dialog.dart';
 import 'package:flutter/material.dart';
 
 class RollHistoryEntry extends StatelessWidget {
   const RollHistoryEntry(this.rollData, {super.key});
 
   final DieRollData rollData;
-  String get resultString => rollData.rolls.join(" | ");
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return ListTile(
-      leading: Polymath.filled(
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (context) => DieResultDialog(rollData),
+        );
+      },
+      contentPadding: EdgeInsets.symmetric(
+        vertical: AppSpacing.lg,
+        horizontal: AppSpacing.md,
+      ),
+      leading: Polymath.fromDie(
         rollData.totalValue.toString(),
+        die: rollData.die,
         style: theme.textTheme.bodyLarge,
         padding: 5,
       ),
@@ -29,14 +41,16 @@ class RollHistoryEntry extends StatelessWidget {
           ),
           AppSpacing.sm.sizedBoxW,
           Text(
-            "13/09 6:40PM",
+            rollData.date.toLocal().toString(),
             style: theme.textTheme.labelSmall,
           ),
         ],
       ),
       subtitle: Container(
-        constraints: BoxConstraints(maxHeight: 60),
-        child: SingleChildScrollView(child: Text(resultString)),
+        constraints: BoxConstraints(maxHeight: AppSizing.lg),
+        child: SingleChildScrollView(
+          child: Text(rollData.rollStrings),
+        ),
       ),
     );
   }

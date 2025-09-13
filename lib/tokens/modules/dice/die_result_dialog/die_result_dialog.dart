@@ -1,23 +1,19 @@
-import 'package:dice_bag/tokens/models/dice/die.dart';
+import 'package:dice_bag/tokens/models/dice/die_roll_data.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
 import 'package:flutter/material.dart';
 
 class DieResultDialog extends StatelessWidget {
-  const DieResultDialog(this.die, {super.key});
+  const DieResultDialog(this.rollData, {super.key});
 
-  final Die die;
+  final DieRollData rollData;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
 
-    final roll = die.roll();
-    final total = roll.totalValue;
-    final resultString = roll.rolls.join(" | ");
-
     return AlertDialog(
       title: Text(
-        die.label,
+        rollData.die.label,
         textAlign: TextAlign.center,
         overflow: TextOverflow.ellipsis,
         maxLines: 1,
@@ -26,14 +22,14 @@ class DieResultDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Polymath.filled(
-            total.toString(),
+            rollData.totalValue.toString(),
             style: theme.textTheme.headlineLarge,
             padding: 5,
-            faces: die.faces,
+            faces: rollData.die.faces,
           ),
-          if (roll.rolls.length > 1)
+          if (rollData.rolls.length > 1)
             Text(
-              resultString,
+              rollData.rollStrings,
               textAlign: TextAlign.center,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,

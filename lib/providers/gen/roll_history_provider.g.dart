@@ -39,7 +39,7 @@ final class RollHistoryNotifierProvider
 }
 
 String _$rollHistoryNotifierHash() =>
-    r'35d3f1079050e3b6bebd7d428b353c903843a0d3';
+    r'a294d0b280d0467535d37037ca9e60945037d2ee';
 
 abstract class _$RollHistoryNotifier extends $Notifier<List<DieRollData>> {
   List<DieRollData> build();

@@ -26,6 +26,8 @@ class DieRollData with _$DieRollData {
   @override
   DateTime date;
 
+  String get rollStrings => rolls.join(" | ");
+
   int get totalValue =>
       max(0, rolls.reduce((a, b) => a + b) + die.modifier);
   /* results.insert(

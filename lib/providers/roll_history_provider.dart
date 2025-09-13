@@ -11,7 +11,7 @@ class RollHistoryNotifier extends _$RollHistoryNotifier {
   }
 
   void registerRoll(DieRollData roll) {
-    state.add(roll);
+    state.insert(0, roll);
     state = state;
   }
 }
