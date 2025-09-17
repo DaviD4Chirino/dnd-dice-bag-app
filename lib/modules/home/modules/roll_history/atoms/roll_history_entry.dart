@@ -1,4 +1,6 @@
+import 'package:dart_date/dart_date.dart';
 import 'package:dice_bag/extensions/double_extensions/sized_box_extension.dart';
+import 'package:dice_bag/i18n/gen/strings.g.dart';
 import 'package:dice_bag/tokens/app/app_sizing.dart';
 import 'package:dice_bag/tokens/app/app_spacing.dart';
 import 'package:dice_bag/tokens/models/dice/die_roll_data.dart';
@@ -13,6 +15,12 @@ class RollHistoryEntry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocale appLocale = AppLocaleUtils.findDeviceLocale();
+    var rollDate = rollData.date.timeago(
+      clock: DateTime.now(),
+      locale: appLocale.languageCode,
+    );
+
     final ThemeData theme = Theme.of(context);
     return ListTile(
       onTap: () {
@@ -40,10 +48,7 @@ class RollHistoryEntry extends StatelessWidget {
             ),
           ),
           AppSpacing.sm.sizedBoxW,
-          Text(
-            rollData.date.toLocal().toString(),
-            style: theme.textTheme.labelSmall,
-          ),
+          Text(rollDate, style: theme.textTheme.labelSmall),
         ],
       ),
       subtitle: Container(
