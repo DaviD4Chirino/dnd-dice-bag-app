@@ -6,7 +6,9 @@ import 'package:dice_bag/tokens/app/app_spacing.dart';
 import 'package:dice_bag/tokens/modules/dice/die_button/die_button.dart';
 import 'package:flexible_wrap/flexible_wrap.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:layout/layout.dart';
 
 class DiceRollPage extends ConsumerWidget {
   const DiceRollPage({super.key});
@@ -18,6 +20,16 @@ class DiceRollPage extends ConsumerWidget {
         .first
         .copyWith();
 
+    var diceList = diceSet.dice
+        .map(
+          (die) => SizedBox(
+            width: 150,
+            height: 150,
+
+            child: DieButton(die, onPressed: null),
+          ),
+        )
+        .toList();
     return Scaffold(
       body: Center(
         child: Container(
@@ -27,23 +39,26 @@ class DiceRollPage extends ConsumerWidget {
             child: Padding(
               padding: EdgeInsets.only(
                 top: AppSizing.xs,
-                left: AppSizing.sm,
-                right: AppSizing.sm,
+                left: AppSpacing.xs,
+                right: AppSpacing.xs,
                 bottom: AppSizing.lg,
               ),
-              child: Column(
+              child: /* LayoutGrid(
+                columnSizes: [0.1.fr, 1.fr],
+                rowSizes:
+                    context.breakpoint > LayoutBreakpoint.md
+                    ? [0.1.fr]
+                    : [0.1.fr, 1.fr],
+                children: [DiceRollHeader()],
+              ), */ Column(
                 children: [
                   DiceRollHeader(),
                   AppSpacing.lg.sizedBoxH,
                   FlexibleWrap(
+                    isOneRowExpanded: true,
                     spacing: AppSizing.xs,
                     runSpacing: AppSizing.xs,
-                    children: diceSet.dice
-                        .map(
-                          (die) =>
-                              DieButton(die, onPressed: null),
-                        )
-                        .toList(),
+                    children: diceList,
                   ),
                 ],
               ),

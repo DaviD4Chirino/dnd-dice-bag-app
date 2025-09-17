@@ -2,7 +2,7 @@ import 'package:dice_bag/tokens/models/dice/die_roll_data.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
 import 'package:dice_bag/tokens/utils/copy_to_clipboard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:layout/layout.dart';
 
 class DieResultDialog extends StatelessWidget {
   const DieResultDialog(this.rollData, {super.key});
@@ -26,8 +26,12 @@ class DieResultDialog extends StatelessWidget {
           Polymath(
             rollData.totalValue.toString(),
             die: rollData.die,
-            style: theme.textTheme.displayMedium,
-            padding: 3,
+            style: context.layout.value(
+              xs: theme.textTheme.displaySmall,
+              md: theme.textTheme.displayMedium,
+            ),
+
+            padding: context.layout.value(xs: 4, md: 3),
           ),
           Text(
             rollData.rollStrings,

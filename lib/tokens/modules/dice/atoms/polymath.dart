@@ -67,6 +67,7 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
               textStyle: textStyle?.copyWith(
                 color: color,
                 fontWeight: FontWeight.bold,
+                height: 0.8,
               ),
               textAlign: TextAlign.center,
               strokeColor: reversedColor,

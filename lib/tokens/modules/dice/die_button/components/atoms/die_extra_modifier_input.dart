@@ -37,13 +37,18 @@ class _DieExtraModifierInputState
       decoration: inputDecoration,
       inputFormatters: [
         FilteringTextInputFormatter.allow(RegExp(r'[0-9+-]')),
-        LengthLimitingTextInputFormatter(10),
+        LengthLimitingTextInputFormatter(5),
       ],
+      keyboardType: TextInputType.number,
       onChanged: (val) {
         if (widget.onChanged != null) {
           widget.onChanged!(int.tryParse(val) ?? 0);
         }
       },
+      onTapOutside: (event) {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+
       cursorHeight: 20,
       style: theme.textTheme.labelLarge,
       textAlign: TextAlign.center,

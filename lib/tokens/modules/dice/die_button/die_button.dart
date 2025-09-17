@@ -8,6 +8,7 @@ import 'package:dice_bag/tokens/modules/dice/die_result_dialog/die_result_dialog
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:layout/layout.dart';
 
 class DieButton extends HookConsumerWidget {
   const DieButton(this.die, {super.key, this.onPressed});
@@ -77,57 +78,62 @@ class DieButton extends HookConsumerWidget {
       return;
     }, [dieAmount.value, dieExtra.value]);
 
-    return SizedBox(
-      width: 160,
-      height: 160,
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          TextButton(
-            onPressed:
-                onPressed ??
-                () {
-                  var rollData = copyDie.roll();
-                  rollHistoryNotifier.registerRoll(rollData);
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        TextButton(
+          onPressed:
+              onPressed ??
+              () {
+                var rollData = copyDie.roll();
+                rollHistoryNotifier.registerRoll(rollData);
 
-                  showDialog(
-                    context: context,
-                    builder: (context) =>
-                        DieResultDialog(rollData),
-                  );
-                },
-            style: style,
-            child: Polymath(
-              dieText,
-              die: copyDie,
-              footerText: extraText,
-              style: theme.textTheme.titleLarge,
-              padding: 10,
-            ),
+                showDialog(
+                  context: context,
+                  builder: (context) =>
+                      DieResultDialog(rollData),
+                );
+              },
+          style: style,
+          child: Polymath(
+            dieText,
+            die: copyDie,
+            footerText: extraText,
+            style: context.layout
+                .value(
+                  xs: theme
+                      .textTheme
+                      .titleMedium, // sm value will be like xs 0.0
+                  md: theme
+                      .textTheme
+                      .titleLarge, // lg value will be like md 24.0
+                )
+                ?.copyWith(fontWeight: FontWeight.bold),
+            padding: 10,
           ),
-          Positioned.fill(
-            child: Align(
-              alignment: Alignment.topRight,
-              child: DieResetButton(onPressed: reset),
-            ),
+        ),
+        Positioned.fill(
+          child: Align(
+            alignment: Alignment.topRight,
+            child: DieResetButton(onPressed: reset),
           ),
+        ),
 
-          Positioned.fill(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: SizedBox(
-                height: AppSizing.md,
-                child: DieButtonFooter(
-                  onMinusPressed: decreaseDieAmount,
-                  onPlusPressed: increaseDieAmount,
-                  onExtraInputChanged: setExtra,
-                  extraInputController: extraTextController,
-                ),
+        Positioned.fill(
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: SizedBox(
+              height: AppSizing.md,
+              child: DieButtonFooter(
+                onMinusPressed: decreaseDieAmount,
+                onPlusPressed: increaseDieAmount,
+                onExtraInputChanged: setExtra,
+                extraInputController: extraTextController,
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
