@@ -7,6 +7,7 @@ import 'package:dice_bag/tokens/models/dice/die_roll_data.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
 import 'package:dice_bag/tokens/modules/dice/die_result_dialog/die_result_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:layout/layout.dart';
 
 class RollHistoryEntry extends StatelessWidget {
   const RollHistoryEntry(this.rollData, {super.key});
@@ -30,14 +31,18 @@ class RollHistoryEntry extends StatelessWidget {
         );
       },
       contentPadding: EdgeInsets.symmetric(
-        vertical: AppSpacing.lg,
+        vertical: AppSpacing.xl,
         horizontal: AppSpacing.md,
       ),
       leading: Polymath(
         rollData.totalValue.toString(),
         die: rollData.die,
-        style: theme.textTheme.bodyLarge,
-        padding: 5,
+        style: context.layout.value(
+          xs: theme.textTheme.bodySmall,
+          md: theme.textTheme.bodyMedium,
+          lg: theme.textTheme.bodyLarge,
+        ),
+        padding: context.layout.value(xs: 5, md: 6, lg: 7),
       ),
       title: Row(
         children: [
@@ -48,7 +53,14 @@ class RollHistoryEntry extends StatelessWidget {
             ),
           ),
           AppSpacing.sm.sizedBoxW,
-          Text(rollDate, style: theme.textTheme.labelSmall),
+          Text(
+            rollDate,
+            style: context.layout.value(
+              xs: theme.textTheme.labelSmall,
+              md: theme.textTheme.labelMedium,
+              lg: theme.textTheme.labelLarge,
+            ),
+          ),
         ],
       ),
       subtitle: Container(
