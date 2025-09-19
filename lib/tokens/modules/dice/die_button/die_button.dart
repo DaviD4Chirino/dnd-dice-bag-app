@@ -152,8 +152,7 @@ class PolymathText extends ConsumerWidget {
         footerText: extraText,
         style: context.layout
             .value(
-              xs: theme.textTheme.titleMedium,
-              sm: theme.textTheme.titleLarge,
+              xs: theme.textTheme.headlineSmall,
               md: theme.textTheme.headlineMedium,
             )
             ?.copyWith(fontWeight: FontWeight.bold),

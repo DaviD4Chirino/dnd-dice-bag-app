@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stroke_text/stroke_text.dart';
+import 'package:outlined_text/outlined_text.dart';
 
 class PolymathFooter extends StatelessWidget {
   const PolymathFooter({
@@ -16,16 +16,23 @@ class PolymathFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    return StrokeText(
-      text: text!,
-      textStyle: theme.textTheme.labelSmall?.copyWith(
-        color: color,
-        fontWeight: FontWeight.bold,
+    return OutlinedText(
+      text: Text(
+        text!,
+        style: theme.textTheme.labelMedium?.copyWith(
+          color: color,
+          fontWeight: FontWeight.bold,
+        ),
+        textAlign: TextAlign.center,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+
+        // strokeColor: reversedColor,
+        // strokeWidth: 3.5,
       ),
-      strokeColor: reversedColor,
-      textAlign: TextAlign.center,
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
+      strokes: [
+        OutlinedTextStroke(color: reversedColor, width: 3),
+      ],
     );
   }
 }

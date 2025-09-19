@@ -5,7 +5,7 @@ import 'package:dice_bag/tokens/modules/dice/atoms/polymath_footer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:stroke_text/stroke_text.dart';
+import 'package:outlined_text/outlined_text.dart';
 
 /// A brute-force adaptation of the Polymath font since the
 /// font has limitations, such as being only white
@@ -25,6 +25,7 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
     this.footerText,
     this.style,
     this.padding = 1.5,
+    this.animate = false,
   });
   final Die die;
 
@@ -34,19 +35,21 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
   final TextStyle? style;
   final double padding;
 
+  final bool animate;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
 
-    var color = die.filled
+    final color = die.filled
         ? theme.colorScheme.surfaceContainerLowest
         : theme.colorScheme.inverseSurface;
 
-    var reversedColor = die.filled
+    final reversedColor = die.filled
         ? theme.colorScheme.inverseSurface
         : theme.colorScheme.surfaceContainerLowest;
 
-    var textStyle = style ?? theme.textTheme.headlineSmall;
+    final textStyle = style ?? theme.textTheme.headlineSmall;
     //TODO: Add a header text option
     return Stack(
       alignment: Alignment.center,
@@ -62,16 +65,29 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
         Positioned.fill(
           child: Align(
             alignment: Alignment.center,
-            child: StrokeText(
-              text: text,
-              textStyle: textStyle?.copyWith(
-                color: color,
-                fontWeight: FontWeight.bold,
-                height: 0.8,
+            child: FittedBox(
+              fit: BoxFit.fitWidth,
+              child: OutlinedText(
+                //TODO: Make your own goddamn text animation you lazy fuck
+                text: Text(
+                  text,
+                  style: textStyle?.copyWith(
+                    color: color,
+                    fontWeight: FontWeight.bold,
+                    height: 0.8,
+                  ),
+                  textAlign: TextAlign.center,
+
+                  // strokeColor: reversedColor,
+                  // strokeWidth: 3.5,
+                ),
+                strokes: [
+                  OutlinedTextStroke(
+                    color: reversedColor,
+                    width: 3.5,
+                  ),
+                ],
               ),
-              textAlign: TextAlign.center,
-              strokeColor: reversedColor,
-              strokeWidth: 3.5,
             ),
           ),
         ),
