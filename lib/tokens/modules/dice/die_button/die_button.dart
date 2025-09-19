@@ -19,17 +19,14 @@ class DieButton extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
 
-    final rollHistoryNotifier = ref.watch(
-      rollHistoryNotifierProvider.notifier,
-    );
-    var copyDie = die.copyWith();
+    final copyDie = die.copyWith();
 
-    var extraTextController = useTextEditingController();
+    final extraTextController = useTextEditingController();
 
-    var dieAmount = useState(1);
-    var dieExtra = useState(0);
+    final dieAmount = useState(1);
+    final dieExtra = useState(0);
 
-    var style = TextButton.styleFrom(
+    final style = TextButton.styleFrom(
       padding: EdgeInsets.symmetric(
         vertical: AppSizing.lg,
         horizontal: AppSizing.lg,
@@ -42,15 +39,15 @@ class DieButton extends HookConsumerWidget {
       visualDensity: VisualDensity.compact,
     );
 
-    var extraText = dieExtra.value != 0
+    final extraText = dieExtra.value != 0
         ? dieExtra.value > 0
               ? "+${dieExtra.value}"
               : "${dieExtra.value}"
         : "";
-    var dieAmountText = dieAmount.value > 1
+    final dieAmountText = dieAmount.value > 1
         ? dieAmount.value.toString()
         : "";
-    var dieText = "$dieAmountText${copyDie.label}";
+    final dieText = "$dieAmountText${copyDie.label}";
 
     void reset() {
       dieAmount.value = 1;
@@ -81,33 +78,12 @@ class DieButton extends HookConsumerWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
-        TextButton(
-          onPressed:
-              onPressed ??
-              () {
-                var rollData = copyDie.roll();
-                rollHistoryNotifier.registerRoll(rollData);
-
-                showDialog(
-                  context: context,
-                  builder: (context) =>
-                      DieResultDialog(rollData),
-                );
-              },
+        PolymathText(
+          onPressed: onPressed,
+          copyDie: copyDie,
           style: style,
-          child: Polymath(
-            dieText,
-            die: copyDie,
-            footerText: extraText,
-            style: context.layout
-                .value(
-                  xs: theme.textTheme.titleMedium,
-                  sm: theme.textTheme.titleLarge,
-                  md: theme.textTheme.headlineMedium,
-                )
-                ?.copyWith(fontWeight: FontWeight.bold),
-            padding: 10,
-          ),
+          dieText: dieText,
+          extraText: extraText,
         ),
         Positioned.fill(
           child: Align(
@@ -131,6 +107,58 @@ class DieButton extends HookConsumerWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class PolymathText extends ConsumerWidget {
+  const PolymathText({
+    super.key,
+    required this.onPressed,
+    required this.copyDie,
+    required this.style,
+    required this.dieText,
+    required this.extraText,
+  });
+
+  final VoidCallback? onPressed;
+  final Die copyDie;
+  final ButtonStyle style;
+  final String dieText;
+  final String extraText;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final rollHistoryNotifier = ref.watch(
+      rollHistoryNotifierProvider.notifier,
+    );
+    final ThemeData theme = Theme.of(context);
+    return TextButton(
+      onPressed:
+          onPressed ??
+          () {
+            var rollData = copyDie.roll();
+            rollHistoryNotifier.registerRoll(rollData);
+
+            showDialog(
+              context: context,
+              builder: (context) => DieResultDialog(rollData),
+            );
+          },
+      style: style,
+      child: Polymath(
+        dieText,
+        die: copyDie,
+        footerText: extraText,
+        style: context.layout
+            .value(
+              xs: theme.textTheme.titleMedium,
+              sm: theme.textTheme.titleLarge,
+              md: theme.textTheme.headlineMedium,
+            )
+            ?.copyWith(fontWeight: FontWeight.bold),
+        padding: 10,
+      ),
     );
   }
 }
