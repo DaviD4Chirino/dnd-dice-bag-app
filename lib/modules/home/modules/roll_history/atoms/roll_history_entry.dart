@@ -6,6 +6,8 @@ import 'package:dice_bag/tokens/app/app_spacing.dart';
 import 'package:dice_bag/tokens/models/dice/die_roll_data.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
 import 'package:dice_bag/tokens/modules/dice/die_result_dialog/die_result_dialog.dart';
+import 'package:dice_bag/tokens/utils/time_ago.dart';
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:layout/layout.dart';
 
@@ -16,12 +18,7 @@ class RollHistoryEntry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppLocale appLocale = AppLocaleUtils.findDeviceLocale();
-    var rollDate = rollData.date.timeago(
-      clock: DateTime.now(),
-      locale: appLocale.languageCode,
-    );
-
+    final rollDate = timeAgo(rollData.date).capitalize;
     final ThemeData theme = Theme.of(context);
     return ListTile(
       onTap: () {
