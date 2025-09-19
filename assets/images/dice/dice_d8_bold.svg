@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <path
+      d="M15 -9.53674e-07C15.5524 0 16 0.447639 16 0.999999L16 15C16 15.5524 15.5524 16 15 16L0.999999 16C0.447641 16 9.53674e-07 15.5524 -4.76837e-07 15L0 1C-9.53674e-07 0.44764 0.447639 0 1 0L15 -9.53674e-07Z"
+      fill="currentColor" transform="matrix(0.707 -0.707 0.707 0.707 0.686 12)" />
+  </g>
+</svg>

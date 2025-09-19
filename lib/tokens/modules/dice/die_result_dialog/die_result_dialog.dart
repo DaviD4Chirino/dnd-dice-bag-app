@@ -14,6 +14,11 @@ class DieResultDialog extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
 
     return AlertDialog(
+      titleTextStyle: context.layout.value(
+        xs: theme.textTheme.headlineSmall,
+        md: theme.textTheme.headlineMedium,
+        lg: theme.textTheme.headlineLarge,
+      ),
       title: Text(
         rollData.die.label,
         textAlign: TextAlign.center,
@@ -29,16 +34,29 @@ class DieResultDialog extends StatelessWidget {
             style: context.layout.value(
               xs: theme.textTheme.displaySmall,
               md: theme.textTheme.displayMedium,
+              lg: theme.textTheme.displayLarge,
             ),
 
-            padding: context.layout.value(xs: 4, md: 3),
+            padding: context.layout.value(xs: 5, lg: 6),
           ),
-          Text(
-            rollData.rollStrings,
-            textAlign: TextAlign.center,
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-            style: theme.textTheme.bodyMedium,
+          Container(
+            constraints: BoxConstraints(
+              maxWidth: context.layout.value(
+                xs: 300,
+                md: 450,
+                lg: 600,
+              ),
+            ),
+            child: Text(
+              rollData.rollStrings,
+              textAlign: TextAlign.center,
+              maxLines: 5,
+              overflow: TextOverflow.ellipsis,
+              style: context.layout.value(
+                xs: theme.textTheme.bodyMedium,
+                lg: theme.textTheme.bodyLarge,
+              ),
+            ),
           ),
         ],
       ),

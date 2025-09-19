@@ -147,4 +147,63 @@ class OutlineText extends StatelessWidget {
     );
   }
 }
+
 //21D100 = 1144
+class StrokeText2 extends StatefulWidget {
+  const StrokeText2({
+    super.key,
+    this.width,
+    this.height,
+    this.text,
+    this.textSize,
+    this.textColor,
+    this.strokeColor,
+    this.letterSpacing,
+    this.strokeWidth,
+  });
+
+  final double? width;
+  final double? height;
+  final String? text;
+  final double? textSize;
+  final Color? textColor;
+  final Color? strokeColor;
+  final double? letterSpacing;
+  final double? strokeWidth;
+
+  @override
+  State<StrokeText2> createState() => _StrokeText2State();
+}
+
+class _StrokeText2State extends State<StrokeText2> {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        // Implement the stroke
+        Text(
+          widget.text ?? '',
+          style: TextStyle(
+            fontSize: widget.textSize ?? 16,
+            letterSpacing: widget.letterSpacing ?? 0,
+            fontWeight: FontWeight.bold,
+            foreground: Paint()
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = widget.strokeWidth ?? 4
+              ..color = widget.strokeColor ?? Colors.black,
+          ),
+        ),
+        // The text inside
+        Text(
+          widget.text ?? '',
+          style: TextStyle(
+            fontSize: widget.textSize ?? 16,
+            letterSpacing: widget.letterSpacing ?? 0,
+            fontWeight: FontWeight.bold,
+            color: widget.textColor ?? Colors.white,
+          ),
+        ),
+      ],
+    );
+  }
+}

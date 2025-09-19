@@ -4,9 +4,9 @@ import 'package:dice_bag/providers/dice_bag_provider.dart';
 import 'package:dice_bag/tokens/app/app_sizing.dart';
 import 'package:dice_bag/tokens/app/app_spacing.dart';
 import 'package:dice_bag/tokens/modules/dice/die_button/die_button.dart';
-import 'package:flexible_wrap/flexible_wrap.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:layout/layout.dart';
 
 class DiceRollPage extends ConsumerWidget {
   const DiceRollPage({super.key});
@@ -19,47 +19,54 @@ class DiceRollPage extends ConsumerWidget {
         .copyWith();
 
     var diceList = diceSet.dice
-        .map(
-          (die) => SizedBox(
-            width: 150,
-            height: 150,
-
-            child: DieButton(die, onPressed: null),
-          ),
-        )
+        .map((die) => DieButton(die, onPressed: null))
         .toList();
     return Scaffold(
       body: Center(
         child: Container(
-          constraints: BoxConstraints(maxWidth: 1024),
+          constraints: BoxConstraints(maxWidth: 1440),
           alignment: Alignment.topCenter,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: AppSizing.xs,
-                left: AppSpacing.xs,
-                right: AppSpacing.xs,
-                bottom: AppSizing.lg,
-              ),
-              child: /* LayoutGrid(
-                columnSizes: [0.1.fr, 1.fr],
-                rowSizes:
-                    context.breakpoint > LayoutBreakpoint.md
-                    ? [0.1.fr]
-                    : [0.1.fr, 1.fr],
-                children: [DiceRollHeader()],
-              ), */ Column(
-                children: [
-                  DiceRollHeader(),
-                  AppSpacing.lg.sizedBoxH,
-                  FlexibleWrap(
-                    isOneRowExpanded: true,
-                    spacing: AppSizing.xs,
-                    runSpacing: AppSizing.xs,
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: AppSizing.md,
+              left: AppSpacing.lg,
+              right: AppSpacing.lg,
+            ),
+            child: /* LayoutGrid(
+              columnSizes: [0.1.fr, 1.fr],
+              rowSizes:
+                  context.breakpoint > LayoutBreakpoint.md
+                  ? [0.1.fr]
+                  : [0.1.fr, 1.fr],
+              children: [DiceRollHeader()],
+            ), */ Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                DiceRollHeader(),
+                AppSpacing.lg.sizedBoxH,
+                Expanded(
+                  child: GridView.count(
+                    crossAxisCount: context.layout.value(
+                      xs: 2,
+                      sm: 3,
+                      md: 4,
+                      lg: 5,
+                      xl: 6,
+                    ),
+                    childAspectRatio: 1,
+                    mainAxisSpacing: AppSpacing.xl,
+                    crossAxisSpacing: AppSpacing.xl,
+
                     children: diceList,
                   ),
-                ],
-              ),
+                ),
+                /* FlexibleWrap(
+                  isOneRowExpanded: true,
+                  spacing: AppSizing.xs,
+                  runSpacing: AppSizing.xs,
+                  children: diceList,
+                ), */
+              ],
             ),
           ),
         ),

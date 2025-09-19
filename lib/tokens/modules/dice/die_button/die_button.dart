@@ -101,12 +101,9 @@ class DieButton extends HookConsumerWidget {
             footerText: extraText,
             style: context.layout
                 .value(
-                  xs: theme
-                      .textTheme
-                      .titleMedium, // sm value will be like xs 0.0
-                  md: theme
-                      .textTheme
-                      .titleLarge, // lg value will be like md 24.0
+                  xs: theme.textTheme.titleMedium,
+                  sm: theme.textTheme.titleLarge,
+                  md: theme.textTheme.headlineMedium,
                 )
                 ?.copyWith(fontWeight: FontWeight.bold),
             padding: 10,

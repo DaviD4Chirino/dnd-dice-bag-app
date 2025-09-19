@@ -50,12 +50,10 @@ class Die with _$Die {
             faces == 10 ||
             faces == 12 ||
             faces == 20
-        ? faces == 12 && alt
-              ? "d12_alt"
-              : "d$faces"
-        : "d_any";
-    final bold = filled ? "bold_" : "";
-    return "assets/images/dice/dice_$bold$existingFace.svg";
+        ? "$faces"
+        : "any";
+    final bold = filled ? "_bold" : "";
+    return "assets/images/dice/dice_d$existingFace$bold.svg";
   }
 
   /// It generates random numbers akin to a dice roll
