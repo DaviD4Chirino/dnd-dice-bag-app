@@ -1,3 +1,4 @@
+import 'package:dice_bag/i18n/gen/strings.g.dart';
 import 'package:dice_bag/tokens/models/dice/die_roll_data.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
 import 'package:dice_bag/tokens/utils/copy_to_clipboard.dart';
@@ -13,6 +14,7 @@ class DieResultDialog extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    final tCopyToClipboard = strings.utils.copyToClipboard;
 
     // final timer = useAnimatedNumber(
     //   finalValue: rollData.totalValue,
@@ -76,7 +78,7 @@ class DieResultDialog extends HookWidget {
             );
           },
           icon: Icon(Icons.copy_rounded),
-          label: Text("Copy"),
+          label: Text(tCopyToClipboard.buttonLabelShort),
         ),
       ],
     );

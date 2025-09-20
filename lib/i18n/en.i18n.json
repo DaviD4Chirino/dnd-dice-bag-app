@@ -1,5 +1,5 @@
 {
-  "appName": "Awesome Flutter Template",
+  "appName": "Awesome Dice Roller",
   "modules": {
     "home": {
       "title": "Home",
@@ -9,6 +9,15 @@
         "zero": "You have not clicked on any time",
         "one": "You have clicked on $n time",
         "other": "You have clicked on $n times"
+      },
+      "tabs": {
+        "dice": "Dice",
+        "history": "History"
+      },
+      "pages": {
+        "diceRollPage": {
+          "info": "Tap and start to roll!"
+        }
       }
     },
     "settings": {
@@ -24,6 +33,18 @@
           "toDark": "Set to dark mode"
         }
       }
+    }
+  },
+  "utils": {
+    "copyToClipboard": {
+      "success": "Copied to clipboard",
+      "buttonLabel": "Copy to clipboard",
+      "buttonLabelShort": "Copy"
+    },
+    "share": {
+      "success": "Shared successfully",
+      "buttonLabel": "Share",
+      "buttonLabelShort": "Share"
     }
   }
 }

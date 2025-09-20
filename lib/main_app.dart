@@ -23,10 +23,11 @@ class _MainAppState extends ConsumerState<MainApp> {
   @override
   Widget build(BuildContext context) {
     /* var localizationDelegate = LocalizedApp.of(context).delegate; */
+    final t = strings;
 
     return Layout(
       child: MaterialApp(
-        title: "Awesome Flutter Template",
+        title: t.appName,
         debugShowCheckedModeBanner: false,
 
         theme: AppTheme.light,

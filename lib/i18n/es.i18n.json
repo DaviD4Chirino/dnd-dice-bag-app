@@ -1,5 +1,5 @@
 {
-  "appName": "Plantilla de Flutter",
+  "appName": "Tira el Dado",
   "modules": {
     "home": {
       "title": "Inicio",
@@ -9,6 +9,15 @@
         "zero": "No has hecho clic",
         "one": "Has hecho clic $n vez",
         "other": "Has hecho clic $n veces"
+      },
+      "tabs": {
+        "dice": "Dados",
+        "history": "Historial"
+      },
+      "pages": {
+        "diceRollPage": {
+          "info": "Toca el dado para comenzar!"
+        }
       }
     },
     "settings": {
@@ -24,6 +33,18 @@
           "toDark": "Cambiar a tema oscuro"
         }
       }
+    }
+  },
+  "utils": {
+    "copyToClipboard": {
+      "success": "Copiado al portapapeles",
+      "buttonLabel": "Copiar al portapapeles",
+      "buttonLabelShort": "Copiar"
+    },
+    "share": {
+      "success": "Compartido con éxito",
+      "buttonLabel": "Compartir",
+      "buttonLabelShort": "Compartir"
     }
   }
 }

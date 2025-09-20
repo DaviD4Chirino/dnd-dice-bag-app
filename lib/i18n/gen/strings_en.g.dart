@@ -40,10 +40,11 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	// Translations
 
-	/// en: 'Awesome Flutter Template'
-	String get appName => 'Awesome Flutter Template';
+	/// en: 'Awesome Dice Roller'
+	String get appName => 'Awesome Dice Roller';
 
 	late final TranslationsModulesEn modules = TranslationsModulesEn._(_root);
+	late final TranslationsUtilsEn utils = TranslationsUtilsEn._(_root);
 }
 
 // Path: modules
@@ -55,6 +56,17 @@ class TranslationsModulesEn {
 	// Translations
 	late final TranslationsModulesHomeEn home = TranslationsModulesHomeEn._(_root);
 	late final TranslationsModulesSettingsEn settings = TranslationsModulesSettingsEn._(_root);
+}
+
+// Path: utils
+class TranslationsUtilsEn {
+	TranslationsUtilsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsUtilsCopyToClipboardEn copyToClipboard = TranslationsUtilsCopyToClipboardEn._(_root);
+	late final TranslationsUtilsShareEn share = TranslationsUtilsShareEn._(_root);
 }
 
 // Path: modules.home
@@ -80,6 +92,9 @@ class TranslationsModulesHomeEn {
 		one: 'You have clicked on ${n} time',
 		other: 'You have clicked on ${n} times',
 	);
+
+	late final TranslationsModulesHomeTabsEn tabs = TranslationsModulesHomeTabsEn._(_root);
+	late final TranslationsModulesHomePagesEn pages = TranslationsModulesHomePagesEn._(_root);
 }
 
 // Path: modules.settings
@@ -95,6 +110,67 @@ class TranslationsModulesSettingsEn {
 
 	late final TranslationsModulesSettingsLanguageSwitcherEn languageSwitcher = TranslationsModulesSettingsLanguageSwitcherEn._(_root);
 	late final TranslationsModulesSettingsThemeSwitcherEn themeSwitcher = TranslationsModulesSettingsThemeSwitcherEn._(_root);
+}
+
+// Path: utils.copyToClipboard
+class TranslationsUtilsCopyToClipboardEn {
+	TranslationsUtilsCopyToClipboardEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Copied to clipboard'
+	String get success => 'Copied to clipboard';
+
+	/// en: 'Copy to clipboard'
+	String get buttonLabel => 'Copy to clipboard';
+
+	/// en: 'Copy'
+	String get buttonLabelShort => 'Copy';
+}
+
+// Path: utils.share
+class TranslationsUtilsShareEn {
+	TranslationsUtilsShareEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Shared successfully'
+	String get success => 'Shared successfully';
+
+	/// en: 'Share'
+	String get buttonLabel => 'Share';
+
+	/// en: 'Share'
+	String get buttonLabelShort => 'Share';
+}
+
+// Path: modules.home.tabs
+class TranslationsModulesHomeTabsEn {
+	TranslationsModulesHomeTabsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Dice'
+	String get dice => 'Dice';
+
+	/// en: 'History'
+	String get history => 'History';
+}
+
+// Path: modules.home.pages
+class TranslationsModulesHomePagesEn {
+	TranslationsModulesHomePagesEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsModulesHomePagesDiceRollPageEn diceRollPage = TranslationsModulesHomePagesDiceRollPageEn._(_root);
 }
 
 // Path: modules.settings.languageSwitcher
@@ -126,6 +202,18 @@ class TranslationsModulesSettingsThemeSwitcherEn {
 	late final TranslationsModulesSettingsThemeSwitcherSubtitleEn subtitle = TranslationsModulesSettingsThemeSwitcherSubtitleEn._(_root);
 }
 
+// Path: modules.home.pages.diceRollPage
+class TranslationsModulesHomePagesDiceRollPageEn {
+	TranslationsModulesHomePagesDiceRollPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Tap and start to roll!'
+	String get info => 'Tap and start to roll!';
+}
+
 // Path: modules.settings.themeSwitcher.subtitle
 class TranslationsModulesSettingsThemeSwitcherSubtitleEn {
 	TranslationsModulesSettingsThemeSwitcherSubtitleEn._(this._root);
@@ -146,7 +234,7 @@ class TranslationsModulesSettingsThemeSwitcherSubtitleEn {
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'appName': return 'Awesome Flutter Template';
+			case 'appName': return 'Awesome Dice Roller';
 			case 'modules.home.title': return 'Home';
 			case 'modules.home.FABTooltip': return 'Increment';
 			case 'modules.home.counterTitle': return 'Counter';
@@ -155,12 +243,21 @@ extension on Translations {
 				one: 'You have clicked on ${n} time',
 				other: 'You have clicked on ${n} times',
 			);
+			case 'modules.home.tabs.dice': return 'Dice';
+			case 'modules.home.tabs.history': return 'History';
+			case 'modules.home.pages.diceRollPage.info': return 'Tap and start to roll!';
 			case 'modules.settings.title': return 'Settings';
 			case 'modules.settings.languageSwitcher.title': return 'Language';
 			case 'modules.settings.languageSwitcher.subtitle': return 'Select the language you want to use';
 			case 'modules.settings.themeSwitcher.title': return 'Set the brightness of the app';
 			case 'modules.settings.themeSwitcher.subtitle.toLight': return 'Set to light mode';
 			case 'modules.settings.themeSwitcher.subtitle.toDark': return 'Set to dark mode';
+			case 'utils.copyToClipboard.success': return 'Copied to clipboard';
+			case 'utils.copyToClipboard.buttonLabel': return 'Copy to clipboard';
+			case 'utils.copyToClipboard.buttonLabelShort': return 'Copy';
+			case 'utils.share.success': return 'Shared successfully';
+			case 'utils.share.buttonLabel': return 'Share';
+			case 'utils.share.buttonLabelShort': return 'Share';
 			default: return null;
 		}
 	}

@@ -1,3 +1,4 @@
+import 'package:dice_bag/i18n/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -7,10 +8,11 @@ void copyToClipboard(
 }) {
   setClipboardData(value);
   // final t = AppLocalizations.of(context);
+  final t = strings.utils.copyToClipboard;
 
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
-      content: Text("Copied to clipboard"),
+      content: Text(t.success),
       duration: Duration(seconds: 2),
     ),
   );

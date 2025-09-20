@@ -15,15 +15,16 @@ class HomePage extends HookWidget {
     var tabBarController = useTabController(initialLength: 2);
 
     // AppLocalizations t = AppLocalizations.of(context);
+    final t = strings.modules.home;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Awesome Dice Roller"),
+        title: Text(strings.appName),
         bottom: TabBar(
           controller: tabBarController,
           tabs: [
-            Tab(text: "Dice"),
-            Tab(text: "History"),
+            Tab(text: t.tabs.dice),
+            Tab(text: t.tabs.history),
           ],
         ),
         actions: [
