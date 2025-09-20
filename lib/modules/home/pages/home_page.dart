@@ -27,11 +27,11 @@ class HomePage extends HookWidget {
           ],
         ),
         actions: [
-          IconButton(
+          /* IconButton(
             tooltip: strings.modules.settings.title,
             onPressed: () {},
             icon: const Icon(Icons.shopping_bag_rounded),
-          ),
+          ), */
           IconButton(
             tooltip: strings.modules.settings.title,
             onPressed: () =>

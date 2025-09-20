@@ -21,6 +21,7 @@ class DiceRollPage extends ConsumerWidget {
     var diceList = diceSet.dice
         .map((die) => DieButton(die, onPressed: null))
         .toList();
+
     return Scaffold(
       body: Center(
         child: Container(
@@ -28,7 +29,7 @@ class DiceRollPage extends ConsumerWidget {
           alignment: Alignment.topCenter,
           child: Padding(
             padding: EdgeInsets.only(
-              top: AppSizing.md,
+              top: AppSizing.xs,
               left: AppSpacing.lg,
               right: AppSpacing.lg,
             ),
@@ -43,7 +44,7 @@ class DiceRollPage extends ConsumerWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 DiceRollHeader(),
-                AppSpacing.lg.sizedBoxH,
+                AppSpacing.md.sizedBoxH,
                 Expanded(
                   child: GridView.count(
                     crossAxisCount: context.layout.value(

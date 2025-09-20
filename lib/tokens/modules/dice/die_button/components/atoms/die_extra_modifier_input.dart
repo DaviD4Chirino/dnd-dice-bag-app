@@ -24,6 +24,12 @@ class _DieExtraModifierInputState
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    var contextTextStyle = context.layout.value(
+      xs: theme.textTheme.labelMedium,
+      sm: theme.textTheme.bodyMedium,
+      md: theme.textTheme.bodyLarge,
+      lg: theme.textTheme.titleMedium,
+    );
     var inputDecoration = InputDecoration(
       border: InputBorder.none,
       alignLabelWithHint: true,
@@ -31,20 +37,13 @@ class _DieExtraModifierInputState
 
       isDense: true,
       hintText: "-1  0  +1",
-      hintStyle: context.layout
-          .value(
-            xs: theme.textTheme.labelSmall,
-            sm: theme.textTheme.bodyMedium,
-            md: theme.textTheme.bodyLarge,
-
-            lg: theme.textTheme.titleMedium,
-          )
-          ?.copyWith(
-            color: theme.colorScheme.onSurface.withAlpha(50),
-          ),
+      hintStyle: contextTextStyle?.copyWith(
+        color: theme.colorScheme.onSurface.withAlpha(50),
+      ),
     );
     return TextField(
       decoration: inputDecoration,
+
       inputFormatters: [
         FilteringTextInputFormatter.allow(RegExp(r'[0-9+-]')),
         LengthLimitingTextInputFormatter(5),
@@ -60,7 +59,7 @@ class _DieExtraModifierInputState
       },
 
       cursorHeight: 20,
-      style: theme.textTheme.labelLarge,
+      style: contextTextStyle,
       textAlign: TextAlign.center,
       textAlignVertical: TextAlignVertical.center,
       controller: widget.controller,

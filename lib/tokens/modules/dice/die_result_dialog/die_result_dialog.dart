@@ -2,9 +2,10 @@ import 'package:dice_bag/tokens/models/dice/die_roll_data.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
 import 'package:dice_bag/tokens/utils/copy_to_clipboard.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:layout/layout.dart';
 
-class DieResultDialog extends StatelessWidget {
+class DieResultDialog extends HookWidget {
   const DieResultDialog(this.rollData, {super.key});
 
   final DieRollData rollData;
@@ -12,6 +13,11 @@ class DieResultDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+
+    // final timer = useAnimatedNumber(
+    //   finalValue: rollData.totalValue,
+    //   duration: rollAnimDuration(),
+    // );
 
     return AlertDialog(
       titleTextStyle: context.layout.value(
@@ -30,14 +36,15 @@ class DieResultDialog extends StatelessWidget {
         children: [
           Polymath(
             rollData.totalValue.toString(),
+            // timer.toString(),
             die: rollData.die,
             style: context.layout.value(
               xs: theme.textTheme.displaySmall,
               md: theme.textTheme.displayMedium,
               lg: theme.textTheme.displayLarge,
             ),
-
             padding: context.layout.value(xs: 5, lg: 6),
+            animate: true,
           ),
           Container(
             constraints: BoxConstraints(

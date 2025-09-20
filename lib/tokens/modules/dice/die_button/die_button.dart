@@ -31,8 +31,8 @@ class DieButton extends HookConsumerWidget {
         vertical: AppSizing.lg,
         horizontal: AppSizing.lg,
       ),
-      foregroundColor: theme.colorScheme.surfaceContainer,
-      backgroundColor: theme.colorScheme.surfaceContainerLow,
+      foregroundColor: theme.colorScheme.primary,
+      backgroundColor: theme.colorScheme.surfaceContainer,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppSizing.xs),
       ),
@@ -92,7 +92,7 @@ class DieButton extends HookConsumerWidget {
           ),
         ),
 
-        Positioned.fill(
+        Positioned(
           child: Align(
             alignment: Alignment.bottomCenter,
             child: SizedBox(
@@ -152,7 +152,7 @@ class PolymathText extends ConsumerWidget {
         footerText: extraText,
         style: context.layout
             .value(
-              xs: theme.textTheme.headlineSmall,
+              xs: theme.textTheme.bodyLarge,
               md: theme.textTheme.headlineMedium,
             )
             ?.copyWith(fontWeight: FontWeight.bold),

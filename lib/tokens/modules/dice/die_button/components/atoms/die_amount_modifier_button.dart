@@ -36,11 +36,12 @@ class DieAmountModifierButton extends StatelessWidget {
         padding: WidgetStateProperty.all(
           EdgeInsets.all(AppSpacing.xs),
         ),
-        minimumSize: WidgetStateProperty.all(
-          const Size(AppSizing.lg, 0),
-        ),
+        minimumSize: WidgetStateProperty.all(const Size(0, 0)),
         shape: WidgetStateProperty.all(
           RoundedRectangleBorder(borderRadius: borderRadius),
+        ),
+        maximumSize: WidgetStateProperty.all(
+          const Size(double.infinity, 0),
         ),
       ),
       onPressed: onPressed,

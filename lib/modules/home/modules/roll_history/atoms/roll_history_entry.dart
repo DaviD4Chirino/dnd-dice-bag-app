@@ -1,6 +1,4 @@
-import 'package:dart_date/dart_date.dart';
 import 'package:dice_bag/extensions/double_extensions/sized_box_extension.dart';
-import 'package:dice_bag/i18n/gen/strings.g.dart';
 import 'package:dice_bag/tokens/app/app_sizing.dart';
 import 'package:dice_bag/tokens/app/app_spacing.dart';
 import 'package:dice_bag/tokens/models/dice/die_roll_data.dart';

@@ -24,21 +24,26 @@ class DieButtonFooter extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
 
       children: [
-        DieAmountModifierButton(
-          increase: false,
-          onPressed: onMinusPressed,
-          alignment: Alignment.bottomLeft,
+        Expanded(
+          child: DieAmountModifierButton(
+            increase: false,
+            onPressed: onMinusPressed,
+            alignment: Alignment.bottomLeft,
+          ),
         ),
         Expanded(
+          flex: 2,
           child: DieExtraModifierInput(
             onChanged: onExtraInputChanged,
             controller: extraInputController,
           ),
         ),
-        DieAmountModifierButton(
-          increase: true,
-          onPressed: onPlusPressed,
-          alignment: Alignment.bottomRight,
+        Expanded(
+          child: DieAmountModifierButton(
+            increase: true,
+            onPressed: onPlusPressed,
+            alignment: Alignment.bottomRight,
+          ),
         ),
       ],
     );

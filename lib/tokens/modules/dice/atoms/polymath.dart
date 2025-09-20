@@ -1,8 +1,11 @@
 import 'package:dice_bag/tokens/app/app_spacing.dart';
 import 'package:dice_bag/tokens/mixins/consumer_mixin.dart';
 import 'package:dice_bag/tokens/models/dice/die.dart';
+import 'package:dice_bag/tokens/models/dice/die_roll_data.dart';
+import 'package:dice_bag/tokens/modules/dice/atoms/die_image.dart';
 import 'package:dice_bag/tokens/modules/dice/atoms/polymath_footer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:outlined_text/outlined_text.dart';
@@ -17,7 +20,7 @@ import 'package:outlined_text/outlined_text.dart';
 /// The [style] parameter is not only for the font style but
 /// the style of the die itself. Pass a [FontWeight.bold]
 /// to display a filled die
-class Polymath extends ConsumerWidget with ConsumerMixin {
+class Polymath extends HookConsumerWidget with ConsumerMixin {
   const Polymath(
     this.text, {
     super.key,
@@ -25,6 +28,7 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
     this.footerText,
     this.style,
     this.padding = 1.5,
+    this.rollData,
     this.animate = false,
   });
   final Die die;
@@ -35,6 +39,8 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
   final TextStyle? style;
   final double padding;
 
+  final DieRollData? rollData;
+
   final bool animate;
 
   @override
@@ -42,12 +48,12 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
     final ThemeData theme = Theme.of(context);
 
     final color = die.filled
-        ? theme.colorScheme.surfaceContainerLowest
+        ? theme.colorScheme.surfaceContainer
         : theme.colorScheme.inverseSurface;
 
     final reversedColor = die.filled
         ? theme.colorScheme.inverseSurface
-        : theme.colorScheme.surfaceContainerLowest;
+        : theme.colorScheme.surfaceContainer;
 
     final textStyle = style ?? theme.textTheme.headlineSmall;
     //TODO: Add a header text option
@@ -65,30 +71,38 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
         Positioned.fill(
           child: Align(
             alignment: Alignment.center,
-            child: FittedBox(
-              fit: BoxFit.fitWidth,
-              child: OutlinedText(
-                //TODO: Make your own goddamn text animation you lazy fuck
-                text: Text(
-                  text,
-                  style: textStyle?.copyWith(
+            child: animate
+                ? FittedText(
+                        text: text,
+                        textStyle: textStyle,
+                        color: color,
+                        reversedColor: reversedColor,
+                      )
+                      .animate(
+                        delay: const Duration(milliseconds: 50),
+                      )
+                      .scaleXY(
+                        duration: const Duration(
+                          milliseconds: 250,
+                        ),
+                        begin: 1,
+                        end: 2,
+                        curve: Curves.easeOut,
+                      )
+                      .then(
+                        delay: const Duration(milliseconds: 100),
+                      )
+                      .scaleXY(
+                        duration: Duration(milliseconds: 350),
+                        end: 1 / 2,
+                        curve: Curves.easeIn,
+                      )
+                : FittedText(
+                    text: text,
+                    textStyle: textStyle,
                     color: color,
-                    fontWeight: FontWeight.bold,
-                    height: 0.8,
+                    reversedColor: reversedColor,
                   ),
-                  textAlign: TextAlign.center,
-
-                  // strokeColor: reversedColor,
-                  // strokeWidth: 3.5,
-                ),
-                strokes: [
-                  OutlinedTextStroke(
-                    color: reversedColor,
-                    width: 3.5,
-                  ),
-                ],
-              ),
-            ),
           ),
         ),
 
@@ -109,31 +123,42 @@ class Polymath extends ConsumerWidget with ConsumerMixin {
   }
 }
 
-class DieImage extends StatelessWidget {
-  const DieImage(
-    this.die, {
+class FittedText extends StatelessWidget {
+  const FittedText({
     super.key,
-    this.width,
-    this.height,
-    this.theme,
+    required this.text,
+    required this.textStyle,
+    required this.color,
+    required this.reversedColor,
   });
 
-  final Die die;
-
-  final double? width;
-  final double? height;
-
-  final SvgTheme? theme;
+  final String text;
+  final TextStyle? textStyle;
+  final Color color;
+  final Color reversedColor;
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      die.imagePath,
-      theme: theme,
-      width:
-          width /* (style?.fontSize ?? 50) * (padding ?? 1.5) */,
-      height:
-          height /*  (style?.fontSize ?? 50) * (padding ?? 1.5) */,
+    return FittedBox(
+      fit: BoxFit.fitWidth,
+      child: OutlinedText(
+        //TODO: Make your own goddamn text animation you lazy fuck
+        text: Text(
+          text,
+          style: textStyle?.copyWith(
+            color: color,
+            fontWeight: FontWeight.bold,
+            height: 0.8,
+          ),
+          textAlign: TextAlign.center,
+
+          // strokeColor: reversedColor,
+          // strokeWidth: 3.5,
+        ),
+        strokes: [
+          OutlinedTextStroke(color: reversedColor, width: 3.5),
+        ],
+      ),
     );
   }
 }
