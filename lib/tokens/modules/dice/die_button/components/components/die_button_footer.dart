@@ -21,7 +21,7 @@ class DieButtonFooter extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
 
       children: [
         Expanded(

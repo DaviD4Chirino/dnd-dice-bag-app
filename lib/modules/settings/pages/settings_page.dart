@@ -17,13 +17,12 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(title: Text(t.title)),
       body: ListView(
         children: [
-          AppSizing.xxl.sizedBoxH,
+          AppSizing.sm.sizedBoxH,
           Image.asset(
             "assets/icons/logo/logo.png",
-            width: AppSizing.xxxl,
-            height: AppSizing.xxxl,
+            width: 200,
+            height: 200,
           ),
-          AppSizing.xxl.sizedBoxH,
           Divider(),
           ThemeModeSwitchAtom(),
           LanguageSwitcherAtom(),

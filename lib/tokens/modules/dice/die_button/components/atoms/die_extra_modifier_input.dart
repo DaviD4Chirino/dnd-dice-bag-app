@@ -37,8 +37,14 @@ class _DieExtraModifierInputState
 
       isDense: true,
       hintText: "-1  0  +1",
+      filled: true,
+      fillColor: theme.colorScheme.primary.withAlpha(50),
+      hoverColor: theme.colorScheme.primary.withAlpha(50),
       hintStyle: contextTextStyle?.copyWith(
         color: theme.colorScheme.onSurface.withAlpha(50),
+        height: 2,
+        // backgroundColor: theme.colorScheme.primary,
+        // decorationColor: theme.colorScheme.primary,
       ),
     );
     return TextField(
@@ -58,7 +64,6 @@ class _DieExtraModifierInputState
         FocusManager.instance.primaryFocus?.unfocus();
       },
 
-      cursorHeight: 20,
       style: contextTextStyle,
       textAlign: TextAlign.center,
       textAlignVertical: TextAlignVertical.center,
