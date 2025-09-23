@@ -1,5 +1,5 @@
 {
-  "appName": "Tira el Dado",
+  "appName": "Dados & Dados",
   "modules": {
     "home": {
       "title": "Inicio",
@@ -19,6 +19,9 @@
           "info": "Toca el dado para comenzar!"
         }
       }
+    },
+    "rollResultDialog": {
+      "reroll": "Volver a tirar"
     },
     "settings": {
       "title": "Configuración",

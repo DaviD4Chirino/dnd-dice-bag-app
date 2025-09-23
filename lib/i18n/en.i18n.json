@@ -1,5 +1,5 @@
 {
-  "appName": "Awesome Dice Roller",
+  "appName": "Dice & Dice",
   "modules": {
     "home": {
       "title": "Home",
@@ -19,6 +19,9 @@
           "info": "Tap and start to roll!"
         }
       }
+    },
+    "rollResultDialog": {
+      "reroll": "Volver a tirar"
     },
     "settings": {
       "title": "Settings",
