@@ -1,6 +1,7 @@
 import 'package:dice_bag/i18n/gen/strings.g.dart';
 import 'package:dice_bag/main_app.dart';
 import 'package:dice_bag/tokens/modules/local_storage/models/local_storage.dart';
+import 'package:dice_bag/tokens/modules/local_storage/models/local_storage_paths.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -13,8 +14,12 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  // LocaleSettings.useDeviceLocaleSync(); // set device locale
-  LocaleSettings.useDeviceLocale(); // and this
+  var locale = LocalStorage.getString(LocalStoragePaths.locale);
+  if (locale == null) {
+    LocaleSettings.useDeviceLocale();
+  } else {
+    LocaleSettings.setLocaleRaw(locale);
+  }
 
   runApp(
     ProviderScope(child: TranslationProvider(child: MainApp())),

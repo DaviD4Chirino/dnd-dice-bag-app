@@ -1,5 +1,7 @@
 import 'package:dice_bag/i18n/gen/strings.g.dart';
 import 'package:dice_bag/tokens/atoms/locale_code_atom.dart';
+import 'package:dice_bag/tokens/modules/local_storage/models/local_storage.dart';
+import 'package:dice_bag/tokens/modules/local_storage/models/local_storage_paths.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
@@ -31,6 +33,10 @@ class LanguageSelectorAlertMolecule extends StatelessWidget {
 
           onTap: () async {
             LocaleSettings.setLocaleRaw(languageTag);
+            LocalStorage.setString(
+              LocalStoragePaths.locale,
+              languageTag,
+            );
             Navigator.of(context).pop();
           },
           leading: LocaleCodeAtom(languageTag),

@@ -14,7 +14,7 @@ class RollHistoryNotifier extends _$RollHistoryNotifier {
   List<DieRollData> build() {
     // LocalStorage.clear();
     var savedHistory = LocalStorage.getStringList(
-      LocalStoragePaths.diceBag,
+      LocalStoragePaths.rollHistory,
     );
     List<DieRollData>? history = savedHistory
         ?.map(
@@ -43,7 +43,7 @@ class RollHistoryNotifier extends _$RollHistoryNotifier {
       var json = JsonCodec();
       var jsonState = state.map((e) => json.encode(e)).toList();
       return LocalStorage.setStringList(
-        LocalStoragePaths.diceBag,
+        LocalStoragePaths.rollHistory,
         jsonState,
       );
     } catch (e) {
