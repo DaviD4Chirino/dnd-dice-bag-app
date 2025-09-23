@@ -40,8 +40,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	// Translations
 
-	/// en: 'Awesome Dice Roller'
-	String get appName => 'Awesome Dice Roller';
+	/// en: 'Dice & Dice'
+	String get appName => 'Dice & Dice';
 
 	late final TranslationsModulesEn modules = TranslationsModulesEn._(_root);
 	late final TranslationsUtilsEn utils = TranslationsUtilsEn._(_root);
@@ -55,6 +55,7 @@ class TranslationsModulesEn {
 
 	// Translations
 	late final TranslationsModulesHomeEn home = TranslationsModulesHomeEn._(_root);
+	late final TranslationsModulesRollResultDialogEn rollResultDialog = TranslationsModulesRollResultDialogEn._(_root);
 	late final TranslationsModulesSettingsEn settings = TranslationsModulesSettingsEn._(_root);
 }
 
@@ -95,6 +96,18 @@ class TranslationsModulesHomeEn {
 
 	late final TranslationsModulesHomeTabsEn tabs = TranslationsModulesHomeTabsEn._(_root);
 	late final TranslationsModulesHomePagesEn pages = TranslationsModulesHomePagesEn._(_root);
+}
+
+// Path: modules.rollResultDialog
+class TranslationsModulesRollResultDialogEn {
+	TranslationsModulesRollResultDialogEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Reroll'
+	String get reroll => 'Reroll';
 }
 
 // Path: modules.settings
@@ -234,7 +247,7 @@ class TranslationsModulesSettingsThemeSwitcherSubtitleEn {
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'appName': return 'Awesome Dice Roller';
+			case 'appName': return 'Dice & Dice';
 			case 'modules.home.title': return 'Home';
 			case 'modules.home.FABTooltip': return 'Increment';
 			case 'modules.home.counterTitle': return 'Counter';
@@ -246,6 +259,7 @@ extension on Translations {
 			case 'modules.home.tabs.dice': return 'Dice';
 			case 'modules.home.tabs.history': return 'History';
 			case 'modules.home.pages.diceRollPage.info': return 'Tap and start to roll!';
+			case 'modules.rollResultDialog.reroll': return 'Reroll';
 			case 'modules.settings.title': return 'Settings';
 			case 'modules.settings.languageSwitcher.title': return 'Language';
 			case 'modules.settings.languageSwitcher.subtitle': return 'Select the language you want to use';

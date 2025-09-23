@@ -16,6 +16,7 @@ class DieResultDialog extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
+    final t = strings.modules.rollResultDialog;
     final globalKeyValue = useState(0);
     final rerolling = useState(false);
     final ValueNotifier<DieRollData?> reRollData = useState(
@@ -94,7 +95,7 @@ class DieResultDialog extends HookConsumerWidget {
         IconButton(
           icon: Icon(Icons.refresh),
           onPressed: reRoll,
-          tooltip: "Reroll",
+          tooltip: t.reroll,
         ),
         FilledButton.tonalIcon(
           onPressed: () {

@@ -36,7 +36,7 @@ class TranslationsEs implements Translations {
 	TranslationsEs $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsEs(meta: meta ?? this.$meta);
 
 	// Translations
-	@override String get appName => 'Tira el Dado';
+	@override String get appName => 'Dados & Dados';
 	@override late final _TranslationsModulesEs modules = _TranslationsModulesEs._(_root);
 	@override late final _TranslationsUtilsEs utils = _TranslationsUtilsEs._(_root);
 }
@@ -49,6 +49,7 @@ class _TranslationsModulesEs implements TranslationsModulesEn {
 
 	// Translations
 	@override late final _TranslationsModulesHomeEs home = _TranslationsModulesHomeEs._(_root);
+	@override late final _TranslationsModulesRollResultDialogEs rollResultDialog = _TranslationsModulesRollResultDialogEs._(_root);
 	@override late final _TranslationsModulesSettingsEs settings = _TranslationsModulesSettingsEs._(_root);
 }
 
@@ -80,6 +81,16 @@ class _TranslationsModulesHomeEs implements TranslationsModulesHomeEn {
 	);
 	@override late final _TranslationsModulesHomeTabsEs tabs = _TranslationsModulesHomeTabsEs._(_root);
 	@override late final _TranslationsModulesHomePagesEs pages = _TranslationsModulesHomePagesEs._(_root);
+}
+
+// Path: modules.rollResultDialog
+class _TranslationsModulesRollResultDialogEs implements TranslationsModulesRollResultDialogEn {
+	_TranslationsModulesRollResultDialogEs._(this._root);
+
+	final TranslationsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get reroll => 'Volver a tirar';
 }
 
 // Path: modules.settings
@@ -187,7 +198,7 @@ class _TranslationsModulesSettingsThemeSwitcherSubtitleEs implements Translation
 extension on TranslationsEs {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'appName': return 'Tira el Dado';
+			case 'appName': return 'Dados & Dados';
 			case 'modules.home.title': return 'Inicio';
 			case 'modules.home.FABTooltip': return 'Aumentar';
 			case 'modules.home.counterTitle': return 'Contador';
@@ -199,6 +210,7 @@ extension on TranslationsEs {
 			case 'modules.home.tabs.dice': return 'Dados';
 			case 'modules.home.tabs.history': return 'Historial';
 			case 'modules.home.pages.diceRollPage.info': return 'Toca el dado para comenzar!';
+			case 'modules.rollResultDialog.reroll': return 'Volver a tirar';
 			case 'modules.settings.title': return 'Configuración';
 			case 'modules.settings.languageSwitcher.title': return 'Idioma';
 			case 'modules.settings.languageSwitcher.subtitle': return 'Cambiar el idioma';
