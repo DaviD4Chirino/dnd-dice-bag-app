@@ -22,7 +22,7 @@ jobs:
 
       - name: outputs to env
         run: |
-          echo "FLUTTER_SDK=3.3.0" >> $GITHUB_ENV
+          echo "FLUTTER_SDK=3.8.1" >> $GITHUB_ENV
           echo "NAME=${{ steps.yaml.outputs.name }}" >> $GITHUB_ENV
           echo "VERSION=${{ steps.yaml.outputs.version }}" >> $GITHUB_ENV
           echo "DESCRIPTION=${{ steps.yaml.outputs.description }}" >> $GITHUB_ENV
