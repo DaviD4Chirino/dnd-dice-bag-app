@@ -1,7 +1,7 @@
 name: dice_bag
 description: "A dice app"
 publish_to: 'none'
-version: 0.4.3
+version: 0.4.4
 
 environment:
   sdk: 3.8.1
