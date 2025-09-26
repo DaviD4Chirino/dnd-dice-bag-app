@@ -22,10 +22,11 @@ jobs:
 
       - name: outputs to env
         run: |
-          echo "DART_SDK=3.32.2" >> $GITHUB_ENV
+          echo "DART_SDK=3.9.3" >> $GITHUB_ENV
           echo "NAME=${{ steps.yaml.outputs.name }}" >> $GITHUB_ENV
           echo "VERSION=${{ steps.yaml.outputs.version }}" >> $GITHUB_ENV
           echo "DESCRIPTION=${{ steps.yaml.outputs.description }}" >> $GITHUB_ENV
+          echo "FLUTTER_VERSION=3.32.2" >> $GITHUB_ENV
       - name: echoing
         run: |
           echo "Dart SDK: ${{ env.DART_SDK  }}"
@@ -36,6 +37,8 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: "stable"
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+
 
       - name: Setup Java
         uses: actions/setup-java@v3
