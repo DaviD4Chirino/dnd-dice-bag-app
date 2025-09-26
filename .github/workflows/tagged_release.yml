@@ -120,13 +120,17 @@ jobs:
         id: generate_changelog
         uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: "log ChangeLog"
+        run: echo "${{ steps.generate_changelog.outputs.changelog }}"
 
       - uses: softprops/action-gh-release@v2
         with:
           name: "v${{ env.VERSION }}"
           tag_name: "v${{ env.VERSION }}"
           body: ${{ steps.generate_changelog.outputs.changelog }}
+          token: ${{ secrets.GH_TOKEN }}
 
           files: |
             build/app/outputs/flutter-apk/${{ env.NAME }}_universal_v${{ env.VERSION }}.apk
