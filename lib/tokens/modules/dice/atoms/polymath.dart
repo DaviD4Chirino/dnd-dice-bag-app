@@ -55,9 +55,97 @@ class Polymath extends HookConsumerWidget with ConsumerMixin {
         ? theme.colorScheme.inverseSurface
         : theme.colorScheme.surfaceContainer;
 
-    final textStyle = style ?? theme.textTheme.headlineSmall;
+    final textStyle = style ?? theme.textTheme.headlineMedium;
     //TODO: Add a header text option
-    return Stack(
+    return Column(
+      children: [
+        Expanded(
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: DieImage(
+                    die,
+                    width: (style?.fontSize ?? 50) * padding,
+                    height: (style?.fontSize ?? 50) * padding,
+                    theme: SvgTheme(
+                      currentColor:
+                          theme.colorScheme.inverseSurface,
+                    ),
+                  ),
+                ),
+              ),
+
+              Positioned.fill(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: animate
+                      ? FittedText(
+                              text: text,
+                              textStyle: textStyle,
+                              color: color,
+                              reversedColor: reversedColor,
+                            )
+                            .animate(
+                              delay: const Duration(
+                                milliseconds: 50,
+                              ),
+                            )
+                            .scaleXY(
+                              duration: const Duration(
+                                milliseconds: 250,
+                              ),
+                              begin: 1,
+                              end: 2,
+                              curve: Curves.easeOut,
+                            )
+                            .then(
+                              delay: const Duration(
+                                milliseconds: 100,
+                              ),
+                            )
+                            .scaleXY(
+                              duration: Duration(
+                                milliseconds: 350,
+                              ),
+                              end: 1 / 2,
+                              curve: Curves.easeIn,
+                            )
+                      : FittedText(
+                          text: text,
+                          textStyle: textStyle,
+                          color: color,
+                          reversedColor: reversedColor,
+                        ),
+                ),
+              ),
+
+              if (footerText != null)
+                Positioned.fill(
+                  bottom: AppSpacing.xs,
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: PolymathFooter(
+                      text: footerText,
+                      color: color,
+                      reversedColor: reversedColor,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+        /* FittedText(
+          text: text,
+          textStyle: textStyle,
+          color: color,
+          reversedColor: reversedColor,
+        ), */
+      ],
+    );
+
+    /* Stack(
       alignment: Alignment.center,
       children: [
         DieImage(
@@ -119,7 +207,7 @@ class Polymath extends HookConsumerWidget with ConsumerMixin {
             ),
           ),
       ],
-    );
+    ); */
   }
 }
 

@@ -37,9 +37,12 @@ class _MainAppState extends ConsumerState<MainApp> {
         initialRoute: AppRoutes.initial,
         routes: AppRoutes.routes,
 
-        locale: TranslationProvider.of(
+        locale: Locale('es'),
+
+        /* TranslationProvider.of(
           context,
-        ).flutterLocale, // use provider
+        ).flutterLocale */
+        // use provider
         supportedLocales: AppLocaleUtils.supportedLocales,
         localizationsDelegates: [
           ...GlobalMaterialLocalizations.delegates,

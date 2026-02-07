@@ -26,18 +26,20 @@ class RollHistoryEntry extends StatelessWidget {
         );
       },
       contentPadding: EdgeInsets.symmetric(
-        vertical: AppSpacing.xl,
+        vertical: AppSpacing.sm,
         horizontal: AppSpacing.md,
       ),
-      leading: Polymath(
-        rollData.totalValue.toString(),
-        die: rollData.die,
-        style: context.layout.value(
-          xs: theme.textTheme.bodySmall,
-          md: theme.textTheme.bodyMedium,
-          lg: theme.textTheme.bodyLarge,
+      leading: SizedBox(
+        width: AppSizing.xxxl,
+        height: AppSizing.xxxl,
+        child: Polymath(
+          rollData.totalValue.toString(),
+          die: rollData.die,
+          style: theme.textTheme.bodyLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+          padding: context.layout.value(xs: 5, md: 6, lg: 7),
         ),
-        padding: context.layout.value(xs: 5, md: 6, lg: 7),
       ),
       title: Row(
         children: [

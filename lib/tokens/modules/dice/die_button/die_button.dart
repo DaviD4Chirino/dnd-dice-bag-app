@@ -7,6 +7,7 @@ import 'package:dice_bag/tokens/modules/dice/atoms/polymath.dart';
 import 'package:dice_bag/tokens/modules/dice/die_result_dialog/die_result_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:layout/layout.dart';
 
@@ -28,13 +29,16 @@ class DieButton extends HookConsumerWidget {
 
     final style = TextButton.styleFrom(
       padding: EdgeInsets.symmetric(
-        vertical: AppSizing.lg,
-        horizontal: AppSizing.lg,
+        vertical: AppSizing.sm,
+        horizontal: AppSizing.sm,
       ),
       foregroundColor: theme.colorScheme.primary,
       backgroundColor: theme.colorScheme.surfaceContainer,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSizing.xs),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(AppSizing.xs),
+          topRight: Radius.circular(AppSizing.xs),
+        ),
       ),
       visualDensity: VisualDensity.compact,
     );
@@ -75,36 +79,33 @@ class DieButton extends HookConsumerWidget {
       return;
     }, [dieAmount.value, dieExtra.value]);
 
-    return Stack(
-      fit: StackFit.expand,
+    return LayoutGrid(
+      rowSizes: [1.fr, 36.px],
+      columnSizes: [1.fr],
       children: [
-        PolymathText(
-          onPressed: onPressed,
-          copyDie: copyDie,
-          style: style,
-          dieText: dieText,
-          extraText: extraText,
-        ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.topRight,
-            child: DieResetButton(onPressed: reset),
-          ),
-        ),
-
-        Positioned(
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: SizedBox(
-              height: AppSizing.md,
-              child: DieButtonFooter(
-                onMinusPressed: decreaseDieAmount,
-                onPlusPressed: increaseDieAmount,
-                onExtraInputChanged: setExtra,
-                extraInputController: extraTextController,
+        Stack(
+          fit: StackFit.expand,
+          children: [
+            PolymathText(
+              onPressed: onPressed,
+              copyDie: copyDie,
+              style: style,
+              dieText: dieText,
+              extraText: extraText,
+            ),
+            Positioned.fill(
+              child: Align(
+                alignment: Alignment.topRight,
+                child: DieResetButton(onPressed: reset),
               ),
             ),
-          ),
+          ],
+        ),
+        DieButtonFooter(
+          onMinusPressed: decreaseDieAmount,
+          onPlusPressed: increaseDieAmount,
+          onExtraInputChanged: setExtra,
+          extraInputController: extraTextController,
         ),
       ],
     );

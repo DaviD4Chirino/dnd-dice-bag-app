@@ -34,6 +34,12 @@ class HomePage extends HookWidget {
             icon: const Icon(Icons.shopping_bag_rounded),
           ), */
           IconButton(
+            tooltip: "Contador",
+            onPressed: () =>
+                Navigator.pushNamed(context, AppRoutes.counter),
+            icon: const Icon(Icons.filter_tilt_shift_rounded),
+          ),
+          IconButton(
             tooltip: strings.modules.settings.title,
             onPressed: () =>
                 Navigator.pushNamed(context, AppRoutes.settings),

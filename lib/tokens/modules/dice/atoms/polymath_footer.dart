@@ -19,7 +19,7 @@ class PolymathFooter extends StatelessWidget {
     return OutlinedText(
       text: Text(
         text!,
-        style: theme.textTheme.labelMedium?.copyWith(
+        style: theme.textTheme.labelLarge?.copyWith(
           color: color,
           fontWeight: FontWeight.bold,
         ),

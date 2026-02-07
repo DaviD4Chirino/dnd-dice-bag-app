@@ -58,17 +58,19 @@ class DieResultDialog extends HookConsumerWidget {
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Polymath(
-            currentRollData.totalValue.toString(),
-            // timer.toString(),
-            die: currentRollData.die,
-            style: context.layout.value(
-              xs: theme.textTheme.displaySmall,
-              md: theme.textTheme.displayMedium,
-              lg: theme.textTheme.displayLarge,
+          Expanded(
+            child: Polymath(
+              currentRollData.totalValue.toString(),
+              // timer.toString(),
+              die: currentRollData.die,
+              style: context.layout.value(
+                xs: theme.textTheme.displaySmall,
+                md: theme.textTheme.displayMedium,
+                lg: theme.textTheme.displayLarge,
+              ),
+              padding: context.layout.value(xs: 5, lg: 6),
+              animate: true,
             ),
-            padding: context.layout.value(xs: 5, lg: 6),
-            animate: true,
           ),
           Container(
             constraints: BoxConstraints(
