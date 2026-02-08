@@ -6,24 +6,32 @@ part of '../roll_history_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
 @ProviderFor(RollHistoryNotifier)
-const rollHistoryNotifierProvider = RollHistoryNotifierProvider._();
+const rollHistoryProvider = RollHistoryNotifierProvider._();
 
 final class RollHistoryNotifierProvider
-    extends $NotifierProvider<RollHistoryNotifier, List<DieRollData>> {
+    extends
+        $NotifierProvider<
+          RollHistoryNotifier,
+          List<DieRollData>
+        > {
   const RollHistoryNotifierProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'rollHistoryNotifierProvider',
+        name: r'rollHistoryProvider',
         isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$rollHistoryNotifierHash();
+  String debugGetCreateSourceHash() =>
+      _$rollHistoryNotifierHash();
 
   @$internal
   @override
@@ -33,7 +41,9 @@ final class RollHistoryNotifierProvider
   Override overrideWithValue(List<DieRollData> value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<List<DieRollData>>(value),
+      providerOverride: $SyncValueProvider<List<DieRollData>>(
+        value,
+      ),
     );
   }
 }
@@ -41,13 +51,15 @@ final class RollHistoryNotifierProvider
 String _$rollHistoryNotifierHash() =>
     r'7a713befb56101cd42d0afcf0bb1b04f4dbe5893';
 
-abstract class _$RollHistoryNotifier extends $Notifier<List<DieRollData>> {
+abstract class _$RollHistoryNotifier
+    extends $Notifier<List<DieRollData>> {
   List<DieRollData> build();
   @$mustCallSuper
   @override
   void runBuild() {
     final created = build();
-    final ref = this.ref as $Ref<List<DieRollData>, List<DieRollData>>;
+    final ref =
+        this.ref as $Ref<List<DieRollData>, List<DieRollData>>;
     final element =
         ref.element
             as $ClassProviderElement<
@@ -59,6 +71,3 @@ abstract class _$RollHistoryNotifier extends $Notifier<List<DieRollData>> {
     element.handleValue(ref, created);
   }
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

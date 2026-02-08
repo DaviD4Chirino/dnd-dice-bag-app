@@ -17,8 +17,7 @@ class MainApp extends ConsumerStatefulWidget {
 
 class _MainAppState extends ConsumerState<MainApp> {
   // Locale get locale => ref.watch(translationNotifierProvider);
-  ThemeMode get themeModeProvider =>
-      ref.watch(themeModeNotifierProvider);
+  ThemeMode get themeMode => ref.watch(themeModeProvider);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,7 @@ class _MainAppState extends ConsumerState<MainApp> {
 
         theme: AppTheme.light,
         darkTheme: AppTheme.dark,
-        themeMode: themeModeProvider,
+        themeMode: themeMode,
 
         initialRoute: AppRoutes.initial,
         routes: AppRoutes.routes,

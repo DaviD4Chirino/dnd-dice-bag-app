@@ -377,14 +377,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.7"
-  fluid_progress_indicator:
-    dependency: "direct main"
-    description:
-      name: fluid_progress_indicator
-      sha256: "6038ae31947b62515b4dbbc3cb7f4961cee63c880ba94d09d6f408782d45d302"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -685,6 +677,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.1"
+  liquid_progress_indicator_v2:
+    dependency: "direct main"
+    description:
+      name: liquid_progress_indicator_v2
+      sha256: "6bb2c675bab4936864a63ccd503be417e407974e11c62711917a4006bb9288b8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0"
   logging:
     dependency: transitive
     description:

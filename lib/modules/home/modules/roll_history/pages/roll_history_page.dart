@@ -8,7 +8,7 @@ class RollHistoryPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final rollHistory = ref.watch(rollHistoryNotifierProvider);
+    final rollHistory = ref.watch(rollHistoryProvider);
 
     return Scaffold(
       body: ListView.separated(

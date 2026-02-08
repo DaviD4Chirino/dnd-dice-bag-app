@@ -131,7 +131,7 @@ class PolymathText extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final rollHistoryNotifier = ref.watch(
-      rollHistoryNotifierProvider.notifier,
+      rollHistoryProvider.notifier,
     );
     final ThemeData theme = Theme.of(context);
     return TextButton(

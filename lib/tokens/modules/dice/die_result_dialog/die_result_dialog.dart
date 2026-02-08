@@ -24,7 +24,7 @@ class DieResultDialog extends HookConsumerWidget {
     );
     final tCopyToClipboard = strings.utils.copyToClipboard;
     final rollHistoryNotifier = ref.watch(
-      rollHistoryNotifierProvider.notifier,
+      rollHistoryProvider.notifier,
     );
 
     var currentRollData = reRollData.value ?? rollData;

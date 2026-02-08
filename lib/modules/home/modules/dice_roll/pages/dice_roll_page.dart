@@ -13,10 +13,7 @@ class DiceRollPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final diceSet = ref
-        .watch(diceBagNotifierProvider)
-        .first
-        .copyWith();
+    final diceSet = ref.watch(diceBagProvider).first.copyWith();
 
     var diceList = diceSet.dice
         .map((die) => DieButton(die, onPressed: null))
